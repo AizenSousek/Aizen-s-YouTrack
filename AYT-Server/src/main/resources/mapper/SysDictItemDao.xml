@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aizensousek.aytserver.dao.SysDictItemDao">
+
+    <resultMap type="com.aizensousek.aytserver.entity.SysDictItem" id="SysDictItemMap">
+        <result property="dictKey" column="DICT_KEY" jdbcType="VARCHAR"/>
+        <result property="keyId" column="KEY_ID" jdbcType="VARCHAR"/>
+        <result property="label" column="LABEL" jdbcType="VARCHAR"/>
+        <result property="sortNum" column="SORT_NUM" jdbcType="VARCHAR"/>
+        <result property="intro" column="INTRO" jdbcType="VARCHAR"/>
+        <result property="revision" column="REVISION" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SysDictItemMap">
+        select DICT_KEY,
+               KEY_ID,
+               LABEL,
+               SORT_NUM,
+               INTRO,
+               REVISION
+        from sys_dict_item
+        where KEY_ID = #{keyId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SysDictItemMap">
+        select
+        DICT_KEY, KEY_ID, LABEL, SORT_NUM, INTRO, REVISION
+        from sys_dict_item
+        <where>
+            <if test="dictKey != null and dictKey != ''">
+                and DICT_KEY = #{dictKey}
+            </if>
+            <if test="keyId != null and keyId != ''">
+                and KEY_ID = #{keyId}
+            </if>
+            <if test="label != null and label != ''">
+                and LABEL = #{label}
+            </if>
+            <if test="sortNum != null and sortNum != ''">
+                and SORT_NUM = #{sortNum}
+            </if>
+            <if test="intro != null and intro != ''">
+                and INTRO = #{intro}
+            </if>
+            <if test="revision != null">
+                and REVISION = #{revision}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from sys_dict_item
+        <where>
+            <if test="dictKey != null and dictKey != ''">
+                and DICT_KEY = #{dictKey}
+            </if>
+            <if test="keyId != null and keyId != ''">
+                and KEY_ID = #{keyId}
+            </if>
+            <if test="label != null and label != ''">
+                and LABEL = #{label}
+            </if>
+            <if test="sortNum != null and sortNum != ''">
+                and SORT_NUM = #{sortNum}
+            </if>
+            <if test="intro != null and intro != ''">
+                and INTRO = #{intro}
+            </if>
+            <if test="revision != null">
+                and REVISION = #{revision}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="keyId" useGeneratedKeys="true">
+        insert into sys_dict_item(DICT_KEY, LABEL, SORT_NUM, INTRO, REVISION)
+        values (#{dictKey}, #{label}, #{sortNum}, #{intro}, #{revision})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="keyId" useGeneratedKeys="true">
+        insert into sys_dict_item(DICT_KEY, LABEL, SORT_NUM, INTRO, REVISION)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.dictKey}, #{entity.label}, #{entity.sortNum}, #{entity.intro}, #{entity.revision})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="keyId" useGeneratedKeys="true">
+        insert into sys_dict_item(DICT_KEY, LABEL, SORT_NUM, INTRO, REVISION)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.dictKey}, #{entity.label}, #{entity.sortNum}, #{entity.intro}, #{entity.revision})
+        </foreach>
+        on duplicate key update
+        DICT_KEY = values(DICT_KEY),
+        LABEL = values(LABEL),
+        SORT_NUM = values(SORT_NUM),
+        INTRO = values(INTRO),
+        REVISION = values(REVISION)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sys_dict_item
+        <set>
+            <if test="dictKey != null and dictKey != ''">
+                DICT_KEY = #{dictKey},
+            </if>
+            <if test="label != null and label != ''">
+                LABEL = #{label},
+            </if>
+            <if test="sortNum != null and sortNum != ''">
+                SORT_NUM = #{sortNum},
+            </if>
+            <if test="intro != null and intro != ''">
+                INTRO = #{intro},
+            </if>
+            <if test="revision != null">
+                REVISION = #{revision},
+            </if>
+        </set>
+        where KEY_ID = #{keyId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from sys_dict_item
+        where KEY_ID = #{keyId}
+    </delete>
+
+</mapper>

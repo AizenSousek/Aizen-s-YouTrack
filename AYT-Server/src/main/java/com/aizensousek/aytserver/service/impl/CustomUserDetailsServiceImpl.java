@@ -1,4 +1,4 @@
-package com.aizensousek.aytserver.service;
+package com.aizensousek.aytserver.service.impl;
 
 import com.aizensousek.aytserver.domain.auth.Role;
 import com.aizensousek.aytserver.domain.auth.UserDetail;

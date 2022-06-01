@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aizensousek.aytserver.dao.ProExtFieldDao">
+
+    <resultMap type="com.aizensousek.aytserver.entity.ProExtField" id="ProExtFieldMap">
+        <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="proId" column="PRO_ID" jdbcType="VARCHAR"/>
+        <result property="proFieldName" column="PRO_FIELD_NAME" jdbcType="VARCHAR"/>
+        <result property="proFieldType" column="PRO_FIELD_TYPE" jdbcType="VARCHAR"/>
+        <result property="beEmpty" column="BE_EMPTY" jdbcType="VARCHAR"/>
+        <result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="CREATED_TIME" jdbcType="TIMESTAMP"/>
+        <result property="updatedBy" column="UPDATED_BY" jdbcType="VARCHAR"/>
+        <result property="updatedTime" column="UPDATED_TIME" jdbcType="TIMESTAMP"/>
+        <result property="defValue" column="DEF_VALUE" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ProExtFieldMap">
+        select ID,
+               PRO_ID,
+               PRO_FIELD_NAME,
+               PRO_FIELD_TYPE,
+               BE_EMPTY,
+               CREATED_BY,
+               CREATED_TIME,
+               UPDATED_BY,
+               UPDATED_TIME,
+               DEF_VALUE
+        from pro_ext_field
+        where ID = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ProExtFieldMap">
+        select
+        ID, PRO_ID, PRO_FIELD_NAME, PRO_FIELD_TYPE, BE_EMPTY, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME,
+        DEF_VALUE
+        from pro_ext_field
+        <where>
+            <if test="id != null and id != ''">
+                and ID = #{id}
+            </if>
+            <if test="proId != null and proId != ''">
+                and PRO_ID = #{proId}
+            </if>
+            <if test="proFieldName != null and proFieldName != ''">
+                and PRO_FIELD_NAME = #{proFieldName}
+            </if>
+            <if test="proFieldType != null and proFieldType != ''">
+                and PRO_FIELD_TYPE = #{proFieldType}
+            </if>
+            <if test="beEmpty != null and beEmpty != ''">
+                and BE_EMPTY = #{beEmpty}
+            </if>
+            <if test="createdBy != null and createdBy != ''">
+                and CREATED_BY = #{createdBy}
+            </if>
+            <if test="createdTime != null">
+                and CREATED_TIME = #{createdTime}
+            </if>
+            <if test="updatedBy != null and updatedBy != ''">
+                and UPDATED_BY = #{updatedBy}
+            </if>
+            <if test="updatedTime != null">
+                and UPDATED_TIME = #{updatedTime}
+            </if>
+            <if test="defValue != null and defValue != ''">
+                and DEF_VALUE = #{defValue}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from pro_ext_field
+        <where>
+            <if test="id != null and id != ''">
+                and ID = #{id}
+            </if>
+            <if test="proId != null and proId != ''">
+                and PRO_ID = #{proId}
+            </if>
+            <if test="proFieldName != null and proFieldName != ''">
+                and PRO_FIELD_NAME = #{proFieldName}
+            </if>
+            <if test="proFieldType != null and proFieldType != ''">
+                and PRO_FIELD_TYPE = #{proFieldType}
+            </if>
+            <if test="beEmpty != null and beEmpty != ''">
+                and BE_EMPTY = #{beEmpty}
+            </if>
+            <if test="createdBy != null and createdBy != ''">
+                and CREATED_BY = #{createdBy}
+            </if>
+            <if test="createdTime != null">
+                and CREATED_TIME = #{createdTime}
+            </if>
+            <if test="updatedBy != null and updatedBy != ''">
+                and UPDATED_BY = #{updatedBy}
+            </if>
+            <if test="updatedTime != null">
+                and UPDATED_TIME = #{updatedTime}
+            </if>
+            <if test="defValue != null and defValue != ''">
+                and DEF_VALUE = #{defValue}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into pro_ext_field(PRO_ID, PRO_FIELD_NAME, PRO_FIELD_TYPE, BE_EMPTY, CREATED_BY, CREATED_TIME,
+                                  UPDATED_BY, UPDATED_TIME, DEF_VALUE)
+        values (#{proId}, #{proFieldName}, #{proFieldType}, #{beEmpty}, #{createdBy}, #{createdTime}, #{updatedBy},
+                #{updatedTime}, #{defValue})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into pro_ext_field(PRO_ID, PRO_FIELD_NAME, PRO_FIELD_TYPE, BE_EMPTY, CREATED_BY, CREATED_TIME,
+        UPDATED_BY, UPDATED_TIME, DEF_VALUE)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.proId}, #{entity.proFieldName}, #{entity.proFieldType}, #{entity.beEmpty}, #{entity.createdBy},
+            #{entity.createdTime}, #{entity.updatedBy}, #{entity.updatedTime}, #{entity.defValue})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into pro_ext_field(PRO_ID, PRO_FIELD_NAME, PRO_FIELD_TYPE, BE_EMPTY, CREATED_BY, CREATED_TIME,
+        UPDATED_BY, UPDATED_TIME, DEF_VALUE)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.proId}, #{entity.proFieldName}, #{entity.proFieldType}, #{entity.beEmpty}, #{entity.createdBy},
+            #{entity.createdTime}, #{entity.updatedBy}, #{entity.updatedTime}, #{entity.defValue})
+        </foreach>
+        on duplicate key update
+        PRO_ID = values(PRO_ID),
+        PRO_FIELD_NAME = values(PRO_FIELD_NAME),
+        PRO_FIELD_TYPE = values(PRO_FIELD_TYPE),
+        BE_EMPTY = values(BE_EMPTY),
+        CREATED_BY = values(CREATED_BY),
+        CREATED_TIME = values(CREATED_TIME),
+        UPDATED_BY = values(UPDATED_BY),
+        UPDATED_TIME = values(UPDATED_TIME),
+        DEF_VALUE = values(DEF_VALUE)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update pro_ext_field
+        <set>
+            <if test="proId != null and proId != ''">
+                PRO_ID = #{proId},
+            </if>
+            <if test="proFieldName != null and proFieldName != ''">
+                PRO_FIELD_NAME = #{proFieldName},
+            </if>
+            <if test="proFieldType != null and proFieldType != ''">
+                PRO_FIELD_TYPE = #{proFieldType},
+            </if>
+            <if test="beEmpty != null and beEmpty != ''">
+                BE_EMPTY = #{beEmpty},
+            </if>
+            <if test="createdBy != null and createdBy != ''">
+                CREATED_BY = #{createdBy},
+            </if>
+            <if test="createdTime != null">
+                CREATED_TIME = #{createdTime},
+            </if>
+            <if test="updatedBy != null and updatedBy != ''">
+                UPDATED_BY = #{updatedBy},
+            </if>
+            <if test="updatedTime != null">
+                UPDATED_TIME = #{updatedTime},
+            </if>
+            <if test="defValue != null and defValue != ''">
+                DEF_VALUE = #{defValue},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from pro_ext_field
+        where ID = #{id}
+    </delete>
+
+</mapper>

@@ -1,4 +1,4 @@
-package com.aizensousek.aytserver.service;
+package com.aizensousek.aytserver.service.impl;
 
 import com.aizensousek.aytserver.domain.ResultCode;
 import com.aizensousek.aytserver.domain.ResultJson;
@@ -7,6 +7,7 @@ import com.aizensousek.aytserver.domain.auth.Role;
 import com.aizensousek.aytserver.domain.auth.UserDetail;
 import com.aizensousek.aytserver.exception.CustomException;
 import com.aizensousek.aytserver.mapper.AuthMapper;
+import com.aizensousek.aytserver.service.AuthService;
 import com.aizensousek.aytserver.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

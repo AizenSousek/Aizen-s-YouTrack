@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:43306/AYT_AUTH
+    url: jdbc:mysql://localhost:43306/AYT
     username: root
     password: 980804224
     driverClassName: com.mysql.cj.jdbc.Driver
