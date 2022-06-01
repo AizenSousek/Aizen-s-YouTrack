@@ -7,9 +7,10 @@ import org.springframework.data.domain.PageRequest;
 /**
  * 用户扩展字段表(UserExt)表服务接口
  *
- * @author makejava
- * @since 2022-06-01 14:40:20
+ * @author aizensousek
+ * @since 2022-06-01 16:27:53
  */
+@SuppressWarnings("unused")
 public interface UserExtService {
 
     /**

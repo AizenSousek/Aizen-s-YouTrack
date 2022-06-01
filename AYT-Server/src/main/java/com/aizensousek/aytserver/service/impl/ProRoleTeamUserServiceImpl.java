@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 项目团队信息表(ProRoleTeamUser)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
 @Service("proRoleTeamUserService")
+@SuppressWarnings("unused")
 public class ProRoleTeamUserServiceImpl implements ProRoleTeamUserService {
     @Resource
     private ProRoleTeamUserDao proRoleTeamUserDao;

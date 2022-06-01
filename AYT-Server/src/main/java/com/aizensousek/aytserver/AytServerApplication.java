@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.aizensousek.aytserver.mapper")
+@MapperScan("com.aizensousek.aytserver.dao")
 public class AytServerApplication {
 
     public static void main(String[] args) {

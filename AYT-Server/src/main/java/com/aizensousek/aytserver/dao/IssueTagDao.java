@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * 问题标记信息表(IssueTag)表数据库访问层
  *
- * @author makejava
- * @since 2022-06-01 14:40:17
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public interface IssueTagDao {
 
     /**

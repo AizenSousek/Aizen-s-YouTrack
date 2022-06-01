@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * (SysDictItem)表数据库访问层
  *
- * @author makejava
- * @since 2022-06-01 14:40:19
+ * @author aizensousek
+ * @since 2022-06-01 16:27:53
  */
+@SuppressWarnings("unused")
 public interface SysDictItemDao {
 
     /**

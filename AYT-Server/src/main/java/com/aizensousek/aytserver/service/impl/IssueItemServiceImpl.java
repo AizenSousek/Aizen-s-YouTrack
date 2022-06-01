@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 问题信息表(IssueItem)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:37:59
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
 @Service("issueItemService")
+@SuppressWarnings("unused")
 public class IssueItemServiceImpl implements IssueItemService {
     @Resource
     private IssueItemDao issueItemDao;

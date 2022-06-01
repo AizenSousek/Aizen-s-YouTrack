@@ -6,10 +6,11 @@ import java.io.Serializable;
  * 用户扩展字段表(UserExt)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:20
+ * @since 2022-06-01 16:27:53
  */
+@SuppressWarnings("unused")
 public class UserExt implements Serializable {
-    private static final long serialVersionUID = -72805087172909226L;
+    private static final long serialVersionUID = 207343628465110945L;
     /**
      * 扩展关系ID
      */

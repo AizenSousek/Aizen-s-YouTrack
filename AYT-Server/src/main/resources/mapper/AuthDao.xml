@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aizensousek.aytserver.mapper.AuthMapper">
+<mapper namespace="com.aizensousek.aytserver.dao.AuthDao">
     <select id="findByUsername" resultType="com.aizensousek.aytserver.domain.auth.UserDetail">
         SELECT ID, NAME, PASSWORD
         FROM SYS_USER

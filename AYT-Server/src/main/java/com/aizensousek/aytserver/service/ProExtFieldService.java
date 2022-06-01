@@ -7,9 +7,10 @@ import org.springframework.data.domain.PageRequest;
 /**
  * 项目自定义字段信息表(ProExtField)表服务接口
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public interface ProExtFieldService {
 
     /**

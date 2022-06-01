@@ -7,10 +7,11 @@ import java.util.Date;
  * 项目自定义字段数据表(ProFieldItemData)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:18
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public class ProFieldItemData implements Serializable {
-    private static final long serialVersionUID = -75208897032240097L;
+    private static final long serialVersionUID = 123738575048201495L;
     /**
      * 数据ID
      */

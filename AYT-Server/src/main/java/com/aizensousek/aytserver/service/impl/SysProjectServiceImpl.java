@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 项目基本信息表(SysProject)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:20
+ * @author aizensousek
+ * @since 2022-06-01 16:27:53
  */
 @Service("sysProjectService")
+@SuppressWarnings("unused")
 public class SysProjectServiceImpl implements SysProjectService {
     @Resource
     private SysProjectDao sysProjectDao;

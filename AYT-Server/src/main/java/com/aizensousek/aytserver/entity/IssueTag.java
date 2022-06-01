@@ -7,10 +7,11 @@ import java.util.Date;
  * 问题标记信息表(IssueTag)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:17
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public class IssueTag implements Serializable {
-    private static final long serialVersionUID = 803684979483785108L;
+    private static final long serialVersionUID = 636719526154113120L;
     /**
      * 标记ID
      */

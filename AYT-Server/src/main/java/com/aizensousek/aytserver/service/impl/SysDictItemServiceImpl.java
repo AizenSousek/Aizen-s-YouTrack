@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * (SysDictItem)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:20
+ * @author aizensousek
+ * @since 2022-06-01 16:27:53
  */
 @Service("sysDictItemService")
+@SuppressWarnings("unused")
 public class SysDictItemServiceImpl implements SysDictItemService {
     @Resource
     private SysDictItemDao sysDictItemDao;

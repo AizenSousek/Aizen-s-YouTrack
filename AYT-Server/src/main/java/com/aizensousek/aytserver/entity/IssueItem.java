@@ -7,10 +7,11 @@ import java.util.Date;
  * 问题信息表(IssueItem)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:37:57
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public class IssueItem implements Serializable {
-    private static final long serialVersionUID = -35470572582316604L;
+    private static final long serialVersionUID = 464363873872116476L;
     /**
      * 问题ID
      */

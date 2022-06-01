@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * 问题信息表(IssueItem)表数据库访问层
  *
- * @author makejava
- * @since 2022-06-01 14:37:56
+ * @author aizensousek
+ * @since 2022-06-01 16:27:51
  */
+@SuppressWarnings("unused")
 public interface IssueItemDao {
 
     /**

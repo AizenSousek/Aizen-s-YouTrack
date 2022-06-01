@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * 项目团队信息表(ProRoleTeamUser)表数据库访问层
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public interface ProRoleTeamUserDao {
 
     /**

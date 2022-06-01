@@ -12,14 +12,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-@SuppressWarnings("rawtypes")
+/**
+ * 权限以及用户管理API
+ *
+ * @author aizensousek
+ * @since 2022年06月01日 16:20:38
+ */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/auth")
+@SuppressWarnings({"rawtypes", "unused"})
 public class AuthResource {
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -33,6 +40,12 @@ public class AuthResource {
         this.authService = authService;
     }
 
+    /**
+     * 登录
+     *
+     * @param user 用户
+     * @return {@link ResultJson}
+     */
     @PostMapping(value = "/login")
     public ResultJson login(
             @Valid @RequestBody User user) {
@@ -40,6 +53,12 @@ public class AuthResource {
         return ResultJson.ok(response);
     }
 
+    /**
+     * 注销
+     *
+     * @param request 请求
+     * @return {@link ResultJson}
+     */
     @GetMapping(value = "/logout")
     public ResultJson logout(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
@@ -50,7 +69,14 @@ public class AuthResource {
         return ResultJson.ok();
     }
 
+    /**
+     * 获取用户
+     *
+     * @param request 请求
+     * @return {@link ResultJson}
+     */
     @RequestMapping(value = "/user", method = {RequestMethod.POST, RequestMethod.GET})
+    @PreAuthorize("hasRole('USER')")
     public ResultJson getUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         if (token == null) {
@@ -61,8 +87,15 @@ public class AuthResource {
         return ResultJson.ok(userDetail);
     }
 
-    @PostMapping(value = "/sign")
-    public ResultJson sign(@RequestBody User user) {
+    /**
+     * 注册
+     *
+     * @param user 用户
+     * @return {@link ResultJson}
+     */
+    @PostMapping(value = "/register")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResultJson register(@RequestBody User user) {
         if (StringUtils.isAnyBlank(user.getName(), user.getPassword())) {
             return ResultJson.failure(ResultCode.BAD_REQUEST);
         }
@@ -70,6 +103,12 @@ public class AuthResource {
         return ResultJson.ok(authService.register(userDetail));
     }
 
+    /**
+     * 刷新并且身份验证令牌
+     *
+     * @param request 请求
+     * @return {@link ResultJson}
+     */
     @GetMapping(value = "refresh")
     public ResultJson refreshAndGetAuthenticationToken(
             HttpServletRequest request) {
@@ -84,8 +123,13 @@ public class AuthResource {
     }
 
 
-    @GetMapping(value = "/current")
-    public ResultJson current() {
+    /**
+     * 心跳
+     *
+     * @return {@link ResultJson}
+     */
+    @GetMapping(value = "/hreatbeats")
+    public ResultJson heartbeats() {
         return ResultJson.ok("success");
     }
 }

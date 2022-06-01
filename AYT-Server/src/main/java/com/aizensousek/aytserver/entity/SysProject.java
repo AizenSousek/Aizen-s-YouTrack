@@ -6,10 +6,11 @@ import java.io.Serializable;
  * 项目基本信息表(SysProject)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:20
+ * @since 2022-06-01 16:27:53
  */
+@SuppressWarnings("unused")
 public class SysProject implements Serializable {
-    private static final long serialVersionUID = 748707180453347506L;
+    private static final long serialVersionUID = 167807329310481101L;
     /**
      * 项目ID
      */

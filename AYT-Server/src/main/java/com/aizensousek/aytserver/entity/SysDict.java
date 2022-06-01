@@ -6,10 +6,11 @@ import java.io.Serializable;
  * (SysDict)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:19
+ * @since 2022-06-01 16:27:53
  */
+@SuppressWarnings("unused")
 public class SysDict implements Serializable {
-    private static final long serialVersionUID = 387281615964214978L;
+    private static final long serialVersionUID = -38309979077602230L;
 
     private String keyId;
 

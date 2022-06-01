@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 问题标记信息表(IssueTag)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:17
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
 @Service("issueTagService")
+@SuppressWarnings("unused")
 public class IssueTagServiceImpl implements IssueTagService {
     @Resource
     private IssueTagDao issueTagDao;

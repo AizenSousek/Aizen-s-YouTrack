@@ -7,9 +7,10 @@ import org.springframework.data.domain.PageRequest;
 /**
  * 项目角色信息表(ProTeamRole)表服务接口
  *
- * @author makejava
- * @since 2022-06-01 14:40:19
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public interface ProTeamRoleService {
 
     /**

@@ -7,10 +7,11 @@ import java.util.Date;
  * 项目自定义字段信息表(ProExtField)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:17
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public class ProExtField implements Serializable {
-    private static final long serialVersionUID = 115615230421729360L;
+    private static final long serialVersionUID = 505182765020264270L;
     /**
      * 自定义字段ID
      */

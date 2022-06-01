@@ -6,10 +6,11 @@ import java.io.Serializable;
  * 项目团队信息表(ProRoleTeamUser)实体类
  *
  * @author makejava
- * @since 2022-06-01 14:40:18
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public class ProRoleTeamUser implements Serializable {
-    private static final long serialVersionUID = 749002358107287101L;
+    private static final long serialVersionUID = 822334591277819963L;
     /**
      * 项目团队关系ID
      */

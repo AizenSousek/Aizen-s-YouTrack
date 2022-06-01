@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 项目自定义字段数据表(ProFieldItemData)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
 @Service("proFieldItemDataService")
+@SuppressWarnings("unused")
 public class ProFieldItemDataServiceImpl implements ProFieldItemDataService {
     @Resource
     private ProFieldItemDataDao proFieldItemDataDao;

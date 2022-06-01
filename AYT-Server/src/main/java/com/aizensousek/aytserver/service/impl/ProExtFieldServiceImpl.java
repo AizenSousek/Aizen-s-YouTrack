@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 项目自定义字段信息表(ProExtField)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
 @Service("proExtFieldService")
+@SuppressWarnings("unused")
 public class ProExtFieldServiceImpl implements ProExtFieldService {
     @Resource
     private ProExtFieldDao proExtFieldDao;

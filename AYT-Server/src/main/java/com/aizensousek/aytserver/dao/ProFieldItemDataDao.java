@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * 项目自定义字段数据表(ProFieldItemData)表数据库访问层
  *
- * @author makejava
- * @since 2022-06-01 14:40:18
+ * @author aizensousek
+ * @since 2022-06-01 16:27:52
  */
+@SuppressWarnings("unused")
 public interface ProFieldItemDataDao {
 
     /**

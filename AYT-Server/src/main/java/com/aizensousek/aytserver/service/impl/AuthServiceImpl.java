@@ -1,12 +1,12 @@
 package com.aizensousek.aytserver.service.impl;
 
+import com.aizensousek.aytserver.dao.AuthDao;
 import com.aizensousek.aytserver.domain.ResultCode;
 import com.aizensousek.aytserver.domain.ResultJson;
 import com.aizensousek.aytserver.domain.auth.ResponseUserToken;
 import com.aizensousek.aytserver.domain.auth.Role;
 import com.aizensousek.aytserver.domain.auth.UserDetail;
 import com.aizensousek.aytserver.exception.CustomException;
-import com.aizensousek.aytserver.mapper.AuthMapper;
 import com.aizensousek.aytserver.service.AuthService;
 import com.aizensousek.aytserver.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +29,13 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtils jwtTokenUtil;
-    private final AuthMapper authMapper;
+    private final AuthDao authMapper;
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
     @Autowired
-    public AuthServiceImpl(AuthenticationManager authenticationManager, @Qualifier("CustomUserDetailsService") UserDetailsService userDetailsService, JwtUtils jwtTokenUtil, AuthMapper authMapper) {
+    public AuthServiceImpl(AuthenticationManager authenticationManager, @Qualifier("CustomUserDetailsService") UserDetailsService userDetailsService, JwtUtils jwtTokenUtil, AuthDao authMapper) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;

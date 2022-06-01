@@ -1,4 +1,4 @@
-package com.aizensousek.aytserver.mapper;
+package com.aizensousek.aytserver.dao;
 
 import com.aizensousek.aytserver.domain.auth.Role;
 import com.aizensousek.aytserver.domain.auth.UserDetail;
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AuthMapper {
+public interface AuthDao {
     /**
      * 根据用户名查找用户
      *

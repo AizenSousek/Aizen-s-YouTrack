@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 /**
  * 用户扩展字段表(UserExt)表服务实现类
  *
- * @author makejava
- * @since 2022-06-01 14:40:20
+ * @author aizensousek
+ * @since 2022-06-01 16:27:53
  */
 @Service("userExtService")
+@SuppressWarnings("unused")
 public class UserExtServiceImpl implements UserExtService {
     @Resource
     private UserExtDao userExtDao;
