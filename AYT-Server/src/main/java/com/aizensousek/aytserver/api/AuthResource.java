@@ -7,6 +7,7 @@ import com.aizensousek.aytserver.domain.auth.Role;
 import com.aizensousek.aytserver.domain.auth.User;
 import com.aizensousek.aytserver.domain.auth.UserDetail;
 import com.aizensousek.aytserver.service.AuthService;
+import com.aizensousek.aytserver.service.SysRoleService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +33,16 @@ public class AuthResource {
     private String tokenHeader;
 
     private final AuthService authService;
+    private final SysRoleService roleService;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    public AuthResource(AuthService authService) {
+    public AuthResource(AuthService authService, SysRoleService roleService) {
         this.authService = authService;
+        this.roleService = roleService;
     }
+
 
     /**
      * 登录
