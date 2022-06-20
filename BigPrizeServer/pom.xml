@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.aizensousek</groupId>
-    <artifactId>AYT-Server</artifactId>
+    <artifactId>BigPrizeServer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>AYT-Server</name>
-    <description>AYT-Server</description>
+    <name>BigPrizeServer</name>
+    <description>BigPrizeServer</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
