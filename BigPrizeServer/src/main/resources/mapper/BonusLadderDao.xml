@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aizensousek.bigprize.dao.BonusLadderDao">
+
+    <resultMap type="com.aizensousek.bigprize.entity.BonusLadder" id="BonusLadderMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="indiId" column="indi_id" jdbcType="VARCHAR"/>
+        <result property="ladderMin" column="ladder_min" jdbcType="INTEGER"/>
+        <result property="ladderMax" column="ladder_max" jdbcType="INTEGER"/>
+        <result property="ladderCoefficient" column="ladder_coefficient" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BonusLadderMap">
+        select id,
+               indi_id,
+               ladder_min,
+               ladder_max,
+               ladder_coefficient
+        from bonus_ladder
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BonusLadderMap">
+        select
+        id, indi_id, ladder_min, ladder_max, ladder_coefficient
+        from bonus_ladder
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="indiId != null and indiId != ''">
+                and indi_id = #{indiId}
+            </if>
+            <if test="ladderMin != null">
+                and ladder_min = #{ladderMin}
+            </if>
+            <if test="ladderMax != null">
+                and ladder_max = #{ladderMax}
+            </if>
+            <if test="ladderCoefficient != null">
+                and ladder_coefficient = #{ladderCoefficient}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from bonus_ladder
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="indiId != null and indiId != ''">
+                and indi_id = #{indiId}
+            </if>
+            <if test="ladderMin != null">
+                and ladder_min = #{ladderMin}
+            </if>
+            <if test="ladderMax != null">
+                and ladder_max = #{ladderMax}
+            </if>
+            <if test="ladderCoefficient != null">
+                and ladder_coefficient = #{ladderCoefficient}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
+        values (#{indiId}, #{ladderMin}, #{ladderMax}, #{ladderCoefficient})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.indiId}, #{entity.ladderMin}, #{entity.ladderMax}, #{entity.ladderCoefficient})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.indiId}, #{entity.ladderMin}, #{entity.ladderMax}, #{entity.ladderCoefficient})
+        </foreach>
+        on duplicate key update
+        indi_id = values(indi_id),
+        ladder_min = values(ladder_min),
+        ladder_max = values(ladder_max),
+        ladder_coefficient = values(ladder_coefficient)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update bonus_ladder
+        <set>
+            <if test="indiId != null and indiId != ''">
+                indi_id = #{indiId},
+            </if>
+            <if test="ladderMin != null">
+                ladder_min = #{ladderMin},
+            </if>
+            <if test="ladderMax != null">
+                ladder_max = #{ladderMax},
+            </if>
+            <if test="ladderCoefficient != null">
+                ladder_coefficient = #{ladderCoefficient},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from bonus_ladder
+        where id = #{id}
+    </delete>
+
+</mapper>
