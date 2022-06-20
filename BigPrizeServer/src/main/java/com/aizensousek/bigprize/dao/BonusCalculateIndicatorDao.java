@@ -10,7 +10,7 @@ import java.util.List;
  * (BonusCalculateIndicator)表数据库访问层
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:58
+ * @since 2022-06-21 14:00:28
  */
 @SuppressWarnings("unused")
 public interface BonusCalculateIndicatorDao {

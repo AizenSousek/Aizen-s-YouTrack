@@ -8,9 +8,9 @@ import org.springframework.data.domain.PageRequest;
  * (BonusLadder)表服务接口
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-22 11:03:19
  */
-@SuppressWarnings("unused")
+ @SuppressWarnings("unused")
 public interface BonusLadderService {
 
     /**
@@ -25,7 +25,7 @@ public interface BonusLadderService {
      * 分页查询
      *
      * @param bonusLadder 筛选条件
-     * @param pageRequest 分页对象
+     * @param pageRequest      分页对象
      * @return 查询结果
      */
     Page<BonusLadder> queryByPage(BonusLadder bonusLadder, PageRequest pageRequest);

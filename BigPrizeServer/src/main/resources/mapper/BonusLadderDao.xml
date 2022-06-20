@@ -5,18 +5,17 @@
     <resultMap type="com.aizensousek.bigprize.entity.BonusLadder" id="BonusLadderMap">
         <result property="id" column="id" jdbcType="VARCHAR"/>
         <result property="indiId" column="indi_id" jdbcType="VARCHAR"/>
-        <result property="ladderMin" column="ladder_min" jdbcType="INTEGER"/>
-        <result property="ladderMax" column="ladder_max" jdbcType="INTEGER"/>
-        <result property="ladderCoefficient" column="ladder_coefficient" jdbcType="INTEGER"/>
+        <result property="indiCalculateStr" column="indi_calculate_str" jdbcType="VARCHAR"/>
+        <result property="minLadder" column="min_ladder" jdbcType="INTEGER"/>
+        <result property="maxLadder" column="max_ladder" jdbcType="INTEGER"/>
+        <result property="maxLadderCalculateStr" column="max_ladder_calculate_str" jdbcType="VARCHAR"/>
+        <result property="calculateSource" column="calculate_source" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BonusLadderMap">
-        select id,
-               indi_id,
-               ladder_min,
-               ladder_max,
-               ladder_coefficient
+        select
+          id, indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source
         from bonus_ladder
         where id = #{id}
     </select>
@@ -24,7 +23,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BonusLadderMap">
         select
-        id, indi_id, ladder_min, ladder_max, ladder_coefficient
+          id, indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source
         from bonus_ladder
         <where>
             <if test="id != null and id != ''">
@@ -33,14 +32,20 @@
             <if test="indiId != null and indiId != ''">
                 and indi_id = #{indiId}
             </if>
-            <if test="ladderMin != null">
-                and ladder_min = #{ladderMin}
+            <if test="indiCalculateStr != null and indiCalculateStr != ''">
+                and indi_calculate_str = #{indiCalculateStr}
             </if>
-            <if test="ladderMax != null">
-                and ladder_max = #{ladderMax}
+            <if test="minLadder != null">
+                and min_ladder = #{minLadder}
             </if>
-            <if test="ladderCoefficient != null">
-                and ladder_coefficient = #{ladderCoefficient}
+            <if test="maxLadder != null">
+                and max_ladder = #{maxLadder}
+            </if>
+            <if test="maxLadderCalculateStr != null and maxLadderCalculateStr != ''">
+                and max_ladder_calculate_str = #{maxLadderCalculateStr}
+            </if>
+            <if test="calculateSource != null and calculateSource != ''">
+                and calculate_source = #{calculateSource}
             </if>
         </where>
         limit #{pageable.offset}, #{pageable.pageSize}
@@ -57,43 +62,51 @@
             <if test="indiId != null and indiId != ''">
                 and indi_id = #{indiId}
             </if>
-            <if test="ladderMin != null">
-                and ladder_min = #{ladderMin}
+            <if test="indiCalculateStr != null and indiCalculateStr != ''">
+                and indi_calculate_str = #{indiCalculateStr}
             </if>
-            <if test="ladderMax != null">
-                and ladder_max = #{ladderMax}
+            <if test="minLadder != null">
+                and min_ladder = #{minLadder}
             </if>
-            <if test="ladderCoefficient != null">
-                and ladder_coefficient = #{ladderCoefficient}
+            <if test="maxLadder != null">
+                and max_ladder = #{maxLadder}
+            </if>
+            <if test="maxLadderCalculateStr != null and maxLadderCalculateStr != ''">
+                and max_ladder_calculate_str = #{maxLadderCalculateStr}
+            </if>
+            <if test="calculateSource != null and calculateSource != ''">
+                and calculate_source = #{calculateSource}
             </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
-        values (#{indiId}, #{ladderMin}, #{ladderMax}, #{ladderCoefficient})
+        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
+        values (#{indiId}, #{indiCalculateStr}, #{minLadder}, #{maxLadder}, #{maxLadderCalculateStr}, #{calculateSource})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
+        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.indiId}, #{entity.ladderMin}, #{entity.ladderMax}, #{entity.ladderCoefficient})
+        (#{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, ladder_min, ladder_max, ladder_coefficient)
+        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.indiId}, #{entity.ladderMin}, #{entity.ladderMax}, #{entity.ladderCoefficient})
+            (#{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
         </foreach>
         on duplicate key update
         indi_id = values(indi_id),
-        ladder_min = values(ladder_min),
-        ladder_max = values(ladder_max),
-        ladder_coefficient = values(ladder_coefficient)
+        indi_calculate_str = values(indi_calculate_str),
+        min_ladder = values(min_ladder),
+        max_ladder = values(max_ladder),
+        max_ladder_calculate_str = values(max_ladder_calculate_str),
+        calculate_source = values(calculate_source)
     </insert>
 
     <!--通过主键修改数据-->
@@ -103,14 +116,20 @@
             <if test="indiId != null and indiId != ''">
                 indi_id = #{indiId},
             </if>
-            <if test="ladderMin != null">
-                ladder_min = #{ladderMin},
+            <if test="indiCalculateStr != null and indiCalculateStr != ''">
+                indi_calculate_str = #{indiCalculateStr},
             </if>
-            <if test="ladderMax != null">
-                ladder_max = #{ladderMax},
+            <if test="minLadder != null">
+                min_ladder = #{minLadder},
             </if>
-            <if test="ladderCoefficient != null">
-                ladder_coefficient = #{ladderCoefficient},
+            <if test="maxLadder != null">
+                max_ladder = #{maxLadder},
+            </if>
+            <if test="maxLadderCalculateStr != null and maxLadderCalculateStr != ''">
+                max_ladder_calculate_str = #{maxLadderCalculateStr},
+            </if>
+            <if test="calculateSource != null and calculateSource != ''">
+                calculate_source = #{calculateSource},
             </if>
         </set>
         where id = #{id}
@@ -118,9 +137,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete
-        from bonus_ladder
-        where id = #{id}
+        delete from bonus_ladder where id = #{id}
     </delete>
 
 </mapper>

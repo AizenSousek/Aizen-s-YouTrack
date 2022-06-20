@@ -1,16 +1,17 @@
 package com.aizensousek.bigprize.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (BonusCalculateIndicator)实体类
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:58
+ * @since 2022-06-21 14:00:28
  */
 @SuppressWarnings("unused")
 public class BonusCalculateIndicator implements Serializable {
-    private static final long serialVersionUID = 244636774503850172L;
+    private static final long serialVersionUID = -74449637002418627L;
 
     private String id;
     /**
@@ -28,36 +29,11 @@ public class BonusCalculateIndicator implements Serializable {
     /**
      * 阶梯算法ID（如果有）
      */
-    private String indiLadderId;
-    /**
-     * 是否是超额计算
-     */
-    private String indiIsExcess;
-    /**
-     * 计算比例
-     */
-    private Integer indiCoefficient;
-    /**
-     * 超额类型(百分比还是绝对值）
-     */
-    private String indiExcessType;
-    /**
-     * 超额计算基线（百分比或者是绝对值)
-     */
-    private Integer indiExcessBase;
+    private List<BonusLadder> ladders;
     /**
      * 指标计算公式（以空格分隔)
      */
     private String indiCalculateStr;
-    /**
-     * 指标计算条件（以空格进行分隔)
-     */
-    private String indiIf;
-    /**
-     * 所属模型ID
-     */
-    private String modelId;
-
 
     public String getId() {
         return id;
@@ -91,44 +67,12 @@ public class BonusCalculateIndicator implements Serializable {
         this.indiType = indiType;
     }
 
-    public String getIndiLadderId() {
-        return indiLadderId;
+    public List<BonusLadder> getLadders() {
+        return ladders;
     }
 
-    public void setIndiLadderId(String indiLadderId) {
-        this.indiLadderId = indiLadderId;
-    }
-
-    public String getIndiIsExcess() {
-        return indiIsExcess;
-    }
-
-    public void setIndiIsExcess(String indiIsExcess) {
-        this.indiIsExcess = indiIsExcess;
-    }
-
-    public Integer getIndiCoefficient() {
-        return indiCoefficient;
-    }
-
-    public void setIndiCoefficient(Integer indiCoefficient) {
-        this.indiCoefficient = indiCoefficient;
-    }
-
-    public String getIndiExcessType() {
-        return indiExcessType;
-    }
-
-    public void setIndiExcessType(String indiExcessType) {
-        this.indiExcessType = indiExcessType;
-    }
-
-    public Integer getIndiExcessBase() {
-        return indiExcessBase;
-    }
-
-    public void setIndiExcessBase(Integer indiExcessBase) {
-        this.indiExcessBase = indiExcessBase;
+    public void setLadders(List<BonusLadder> ladders) {
+        this.ladders = ladders;
     }
 
     public String getIndiCalculateStr() {
@@ -154,5 +98,29 @@ public class BonusCalculateIndicator implements Serializable {
     public void setModelId(String modelId) {
         this.modelId = modelId;
     }
+
+    public BonusCalculateIndicator() {
+    }
+
+    public BonusCalculateIndicator(String id, String indiName, String indiComment, String indiType, List<BonusLadder> ladders, String indiCalculateStr, String indiIf, String modelId) {
+        this.id = id;
+        this.indiName = indiName;
+        this.indiComment = indiComment;
+        this.indiType = indiType;
+        this.ladders = ladders;
+        this.indiCalculateStr = indiCalculateStr;
+        this.indiIf = indiIf;
+        this.modelId = modelId;
+    }
+
+    /**
+     * 指标计算条件（以空格进行分隔)
+     */
+    private String indiIf;
+    /**
+     * 所属模型ID
+     */
+    private String modelId;
+
 
 }

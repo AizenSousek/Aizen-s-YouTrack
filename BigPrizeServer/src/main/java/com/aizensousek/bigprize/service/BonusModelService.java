@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
  * (BonusModel)表服务接口
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-21 14:00:27
  */
 @SuppressWarnings("unused")
 public interface BonusModelService {

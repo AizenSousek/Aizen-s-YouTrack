@@ -6,29 +6,37 @@ import java.io.Serializable;
  * (BonusLadder)实体类
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-22 11:03:19
  */
 @SuppressWarnings("unused")
 public class BonusLadder implements Serializable {
-    private static final long serialVersionUID = -23795705005906950L;
-
+    private static final long serialVersionUID = -56380095906298744L;
+    
     private String id;
     /**
      * 所属指标ID
      */
     private String indiId;
     /**
-     * 阶梯计算基线
+     * 指标计算公式
      */
-    private Integer ladderMin;
+    private String indiCalculateStr;
     /**
-     * 阶梯计算上线
+     * 最小阶梯
      */
-    private Integer ladderMax;
+    private Integer minLadder;
     /**
-     * 阶梯计算比例
+     * 最大阶梯
      */
-    private Integer ladderCoefficient;
+    private Integer maxLadder;
+    /**
+     * 满足最大阶梯时的计算公式
+     */
+    private String maxLadderCalculateStr;
+    /**
+     * 主要计算数据源
+     */
+    private String calculateSource;
 
 
     public String getId() {
@@ -47,28 +55,44 @@ public class BonusLadder implements Serializable {
         this.indiId = indiId;
     }
 
-    public Integer getLadderMin() {
-        return ladderMin;
+    public String getIndiCalculateStr() {
+        return indiCalculateStr;
     }
 
-    public void setLadderMin(Integer ladderMin) {
-        this.ladderMin = ladderMin;
+    public void setIndiCalculateStr(String indiCalculateStr) {
+        this.indiCalculateStr = indiCalculateStr;
     }
 
-    public Integer getLadderMax() {
-        return ladderMax;
+    public Integer getMinLadder() {
+        return minLadder;
     }
 
-    public void setLadderMax(Integer ladderMax) {
-        this.ladderMax = ladderMax;
+    public void setMinLadder(Integer minLadder) {
+        this.minLadder = minLadder;
     }
 
-    public Integer getLadderCoefficient() {
-        return ladderCoefficient;
+    public Integer getMaxLadder() {
+        return maxLadder;
     }
 
-    public void setLadderCoefficient(Integer ladderCoefficient) {
-        this.ladderCoefficient = ladderCoefficient;
+    public void setMaxLadder(Integer maxLadder) {
+        this.maxLadder = maxLadder;
+    }
+
+    public String getMaxLadderCalculateStr() {
+        return maxLadderCalculateStr;
+    }
+
+    public void setMaxLadderCalculateStr(String maxLadderCalculateStr) {
+        this.maxLadderCalculateStr = maxLadderCalculateStr;
+    }
+
+    public String getCalculateSource() {
+        return calculateSource;
+    }
+
+    public void setCalculateSource(String calculateSource) {
+        this.calculateSource = calculateSource;
     }
 
 }

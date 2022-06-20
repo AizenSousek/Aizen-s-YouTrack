@@ -6,11 +6,11 @@ import java.io.Serializable;
  * (BonusModel)实体类
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-21 14:00:27
  */
 @SuppressWarnings("unused")
 public class BonusModel implements Serializable {
-    private static final long serialVersionUID = -42969693665358290L;
+    private static final long serialVersionUID = -73448516881852001L;
 
     private String id;
 

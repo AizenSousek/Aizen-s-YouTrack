@@ -8,10 +8,6 @@
         <result property="indiComment" column="indi_comment" jdbcType="VARCHAR"/>
         <result property="indiType" column="indi_type" jdbcType="VARCHAR"/>
         <result property="indiLadderId" column="indi_ladder_id" jdbcType="VARCHAR"/>
-        <result property="indiIsExcess" column="indi_is_excess" jdbcType="VARCHAR"/>
-        <result property="indiCoefficient" column="indi_coefficient" jdbcType="INTEGER"/>
-        <result property="indiExcessType" column="indi_excess_type" jdbcType="VARCHAR"/>
-        <result property="indiExcessBase" column="indi_excess_base" jdbcType="INTEGER"/>
         <result property="indiCalculateStr" column="indi_calculate_str" jdbcType="VARCHAR"/>
         <result property="indiIf" column="indi_if" jdbcType="VARCHAR"/>
         <result property="modelId" column="model_id" jdbcType="VARCHAR"/>
@@ -24,10 +20,6 @@
                indi_comment,
                indi_type,
                indi_ladder_id,
-               indi_is_excess,
-               indi_coefficient,
-               indi_excess_type,
-               indi_excess_base,
                indi_calculate_str,
                indi_if,
                model_id
@@ -38,8 +30,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BonusCalculateIndicatorMap">
         select
-        id, indi_name, indi_comment, indi_type, indi_ladder_id, indi_is_excess, indi_coefficient, indi_excess_type,
-        indi_excess_base, indi_calculate_str, indi_if, model_id
+        id, indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str, indi_if, model_id
         from bonus_calculate_indicator
         <where>
             <if test="id != null and id != ''">
@@ -56,18 +47,6 @@
             </if>
             <if test="indiLadderId != null and indiLadderId != ''">
                 and indi_ladder_id = #{indiLadderId}
-            </if>
-            <if test="indiIsExcess != null and indiIsExcess != ''">
-                and indi_is_excess = #{indiIsExcess}
-            </if>
-            <if test="indiCoefficient != null">
-                and indi_coefficient = #{indiCoefficient}
-            </if>
-            <if test="indiExcessType != null and indiExcessType != ''">
-                and indi_excess_type = #{indiExcessType}
-            </if>
-            <if test="indiExcessBase != null">
-                and indi_excess_base = #{indiExcessBase}
             </if>
             <if test="indiCalculateStr != null and indiCalculateStr != ''">
                 and indi_calculate_str = #{indiCalculateStr}
@@ -102,18 +81,6 @@
             <if test="indiLadderId != null and indiLadderId != ''">
                 and indi_ladder_id = #{indiLadderId}
             </if>
-            <if test="indiIsExcess != null and indiIsExcess != ''">
-                and indi_is_excess = #{indiIsExcess}
-            </if>
-            <if test="indiCoefficient != null">
-                and indi_coefficient = #{indiCoefficient}
-            </if>
-            <if test="indiExcessType != null and indiExcessType != ''">
-                and indi_excess_type = #{indiExcessType}
-            </if>
-            <if test="indiExcessBase != null">
-                and indi_excess_base = #{indiExcessBase}
-            </if>
             <if test="indiCalculateStr != null and indiCalculateStr != ''">
                 and indi_calculate_str = #{indiCalculateStr}
             </if>
@@ -128,31 +95,27 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_is_excess,
-                                              indi_coefficient, indi_excess_type, indi_excess_base, indi_calculate_str,
+        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
                                               indi_if, model_id)
-        values (#{indiName}, #{indiComment}, #{indiType}, #{indiLadderId}, #{indiIsExcess}, #{indiCoefficient},
-                #{indiExcessType}, #{indiExcessBase}, #{indiCalculateStr}, #{indiIf}, #{modelId})
+        values (#{indiName}, #{indiComment}, #{indiType}, #{indiLadderId}, #{indiCalculateStr}, #{indiIf}, #{modelId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_is_excess,
-        indi_coefficient, indi_excess_type, indi_excess_base, indi_calculate_str, indi_if, model_id)
+        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
+        indi_if, model_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.indiName}, #{entity.indiComment}, #{entity.indiType}, #{entity.indiLadderId},
-            #{entity.indiIsExcess}, #{entity.indiCoefficient}, #{entity.indiExcessType}, #{entity.indiExcessBase},
             #{entity.indiCalculateStr}, #{entity.indiIf}, #{entity.modelId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_is_excess,
-        indi_coefficient, indi_excess_type, indi_excess_base, indi_calculate_str, indi_if, model_id)
+        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
+        indi_if, model_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.indiName}, #{entity.indiComment}, #{entity.indiType}, #{entity.indiLadderId},
-            #{entity.indiIsExcess}, #{entity.indiCoefficient}, #{entity.indiExcessType}, #{entity.indiExcessBase},
             #{entity.indiCalculateStr}, #{entity.indiIf}, #{entity.modelId})
         </foreach>
         on duplicate key update
@@ -160,10 +123,6 @@
         indi_comment = values(indi_comment),
         indi_type = values(indi_type),
         indi_ladder_id = values(indi_ladder_id),
-        indi_is_excess = values(indi_is_excess),
-        indi_coefficient = values(indi_coefficient),
-        indi_excess_type = values(indi_excess_type),
-        indi_excess_base = values(indi_excess_base),
         indi_calculate_str = values(indi_calculate_str),
         indi_if = values(indi_if),
         model_id = values(model_id)
@@ -184,18 +143,6 @@
             </if>
             <if test="indiLadderId != null and indiLadderId != ''">
                 indi_ladder_id = #{indiLadderId},
-            </if>
-            <if test="indiIsExcess != null and indiIsExcess != ''">
-                indi_is_excess = #{indiIsExcess},
-            </if>
-            <if test="indiCoefficient != null">
-                indi_coefficient = #{indiCoefficient},
-            </if>
-            <if test="indiExcessType != null and indiExcessType != ''">
-                indi_excess_type = #{indiExcessType},
-            </if>
-            <if test="indiExcessBase != null">
-                indi_excess_base = #{indiExcessBase},
             </if>
             <if test="indiCalculateStr != null and indiCalculateStr != ''">
                 indi_calculate_str = #{indiCalculateStr},

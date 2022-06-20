@@ -6,11 +6,11 @@ import java.io.Serializable;
  * (BonusInputSource)实体类
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-21 14:00:27
  */
 @SuppressWarnings("unused")
 public class BonusInputSource implements Serializable {
-    private static final long serialVersionUID = -53220004634543179L;
+    private static final long serialVersionUID = 245320393281209207L;
 
     private String id;
 
@@ -21,6 +21,8 @@ public class BonusInputSource implements Serializable {
     private String sourceInputType;
 
     private String sourceCode;
+
+    private String value;
 
 
     public String getId() {
@@ -63,4 +65,23 @@ public class BonusInputSource implements Serializable {
         this.sourceCode = sourceCode;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public BonusInputSource() {
+    }
+
+    public BonusInputSource(String id, String modelId, String sourceName, String sourceInputType, String sourceCode, String value) {
+        this.id = id;
+        this.modelId = modelId;
+        this.sourceName = sourceName;
+        this.sourceInputType = sourceInputType;
+        this.sourceCode = sourceCode;
+        this.value = value;
+    }
 }

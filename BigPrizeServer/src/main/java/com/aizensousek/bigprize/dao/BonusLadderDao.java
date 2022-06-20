@@ -3,16 +3,15 @@ package com.aizensousek.bigprize.dao;
 import com.aizensousek.bigprize.entity.BonusLadder;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 
 /**
  * (BonusLadder)表数据库访问层
  *
  * @author aizensousek
- * @since 2022-06-20 15:29:59
+ * @since 2022-06-22 11:03:19
  */
-@SuppressWarnings("unused")
+ @SuppressWarnings("unused")
 public interface BonusLadderDao {
 
     /**
@@ -27,7 +26,7 @@ public interface BonusLadderDao {
      * 查询指定行数据
      *
      * @param bonusLadder 查询条件
-     * @param pageable    分页对象
+     * @param pageable         分页对象
      * @return 对象列表
      */
     List<BonusLadder> queryAllByLimit(BonusLadder bonusLadder, @Param("pageable") Pageable pageable);
