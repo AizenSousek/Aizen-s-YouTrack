@@ -1,0 +1,173 @@
+{
+  "id": "d019fc3209ce4610a47d9bc144cadd29",
+  "name": "生态与分销-城市经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "b0e4ff6319e04d9092c3e28d1b42849c",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "净收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "8d750f654cbf4758bdfd809b4d41a0a0"
+    },
+    {
+      "id": "e98866941e5944f2bb377026314bbb4d",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "净收入实际完成",
+      "sourceInputType": "number",
+      "sourceCode": "f85c8e91dbc040f2a2ff5575d384c0cd"
+    },
+    {
+      "id": "f512005f1c46474db143aee7060f71a0",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "权责收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "48766355d18b49f4ac1a518b850a680c"
+    },
+    {
+      "id": "7e10fa755cd5400e9d7e4750382b8a07",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "权责收入完成",
+      "sourceInputType": "number",
+      "sourceCode": "de508d78cfd646c0935f02e614bc2894"
+    },
+    {
+      "id": "beaf7cacb8b943c99bda2066ab9aaac5",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "空白区域新签约净收入",
+      "sourceInputType": "number",
+      "sourceCode": "a7f4d6d2004142c399462e0d2aa7b908"
+    },
+    {
+      "id": "77f758db22064db78461e9168cd35755",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "新渠道权责收入",
+      "sourceInputType": "number",
+      "sourceCode": "fa76cc0f38644874ae08aff512e59fdc"
+    },
+    {
+      "id": "2956f66670f94a11a82f64da70966e09",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "新渠道收付收入",
+      "sourceInputType": "number",
+      "sourceCode": "ae8772a08f2e48eaba132bdfa5b0d0d4"
+    },
+    {
+      "id": "29d17c1f473c4e5d80da4f84dbea25ef",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29",
+      "sourceName": "老伙伴增长率",
+      "sourceInputType": "percent",
+      "sourceCode": "ccb1e5f77f104d57beb737c8144d50c1"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "71ff094f4dc34252b0ab9ead20806865",
+      "indiName": "净收入完成[0-100%]",
+      "indiComment": "净收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${f85c8e91dbc040f2a2ff5575d384c0cd} * 0.02",
+      "indiIf": "${f85c8e91dbc040f2a2ff5575d384c0cd} <= ${8d750f654cbf4758bdfd809b4d41a0a0}",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "1ef86da22a144d148ce200f860591bfe",
+      "indiName": "净收入完成[100%以上]",
+      "indiComment": "净收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${f85c8e91dbc040f2a2ff5575d384c0cd} - ${8d750f654cbf4758bdfd809b4d41a0a0} } * 0.03",
+      "indiIf": "${f85c8e91dbc040f2a2ff5575d384c0cd} > ${8d750f654cbf4758bdfd809b4d41a0a0}",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "fe44392812b4477a8d5e869ff1c16032",
+      "indiName": "净收入绝对值超过250W部分收入",
+      "indiComment": "净收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${f85c8e91dbc040f2a2ff5575d384c0cd} - 2500000 ) * 0.02",
+      "indiIf": "${f85c8e91dbc040f2a2ff5575d384c0cd} > 2500000",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "f9b907eae532495b870784cb63f303db",
+      "indiName": "权责收入完成[0-100%]",
+      "indiComment": "权责收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${de508d78cfd646c0935f02e614bc2894} * 0.02",
+      "indiIf": "${de508d78cfd646c0935f02e614bc2894} <= ${48766355d18b49f4ac1a518b850a680c}",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "0e14997859b9408c8612b1c2064209e0",
+      "indiName": "权责收入完成[100%以上]",
+      "indiComment": "权责收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${de508d78cfd646c0935f02e614bc2894} - ${48766355d18b49f4ac1a518b850a680c} } * 0.04",
+      "indiIf": "${de508d78cfd646c0935f02e614bc2894} > ${48766355d18b49f4ac1a518b850a680c}",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "0361d1b8eb1d49878b955c6088e666af",
+      "indiName": "权责收入绝对值超过250W部分收入",
+      "indiComment": "权责收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": " ( ${de508d78cfd646c0935f02e614bc2894} - 2500000 ) * 0.04",
+      "indiIf": "${de508d78cfd646c0935f02e614bc2894} > 2500000",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "8c615868734a433cbd34a6301a899eae",
+      "indiName": "空白区域新签约净收入",
+      "indiComment": "空白区域新签约净收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${a7f4d6d2004142c399462e0d2aa7b908} * 0.02",
+      "indiIf": "${a7f4d6d2004142c399462e0d2aa7b908} > 0",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "03118d82ec8d4390899c233dda032417",
+      "indiName": "新渠道权责收入",
+      "indiComment": "新渠道权责收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${fa76cc0f38644874ae08aff512e59fdc} * 0.02",
+      "indiIf": "${fa76cc0f38644874ae08aff512e59fdc} > 0",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "2635a977e0f64c3896348d6a159b2599",
+      "indiName": "新渠道收付收入",
+      "indiComment": "新渠道收付收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${ae8772a08f2e48eaba132bdfa5b0d0d4} * 0.02",
+      "indiIf": "${ae8772a08f2e48eaba132bdfa5b0d0d4} > 0",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "fab89acacfef4980893203256b7cb19f",
+      "indiName": "老伙伴增长率[老伙伴增长率 <= 20%]",
+      "indiComment": "老伙伴增长率[老伙伴增长率 <= 20%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "-0.1",
+      "indiIf": "${ccb1e5f77f104d57beb737c8144d50c1} <= 0.2",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "511cfcb0419d4a558effb5fb9fbd95c4",
+      "indiName": "老伙伴增长率[20% < 老伙伴增长率 < 35%]",
+      "indiComment": "老伙伴增长率[20% < 老伙伴增长率 < 35%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0",
+      "indiIf": "0.2 <= ${ccb1e5f77f104d57beb737c8144d50c1} < 0.35",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    },
+    {
+      "id": "b21b9c8e0d8249878e1cbb3ed82c4e9d",
+      "indiName": "老伙伴增长率[老伙伴增长率 >= 35%]",
+      "indiComment": "老伙伴增长率[老伙伴增长率 >= 35%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0.1",
+      "indiIf": "0.35 <= ${ccb1e5f77f104d57beb737c8144d50c1}",
+      "modelId": "d019fc3209ce4610a47d9bc144cadd29"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "5a062acf6aeb44558bda64df1797722d",
+  "name": "电子政务网项目组赵紫燕奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "66f019505d3b4ffb9ff8137a8e6336d6",
+      "modelId": "5a062acf6aeb44558bda64df1797722d",
+      "sourceName": "团队完成率",
+      "sourceInputType": "percent",
+      "sourceCode": "b106cea80b164671ab30ed9ba5926276"
+    },
+    {
+      "id": "30561b9773bd4145b3d21b1a67ae43c2",
+      "modelId": "5a062acf6aeb44558bda64df1797722d",
+      "sourceName": "全年个人平均绩效",
+      "sourceInputType": "number",
+      "sourceCode": "907701efe05f4af7a7a751062b3277c6dd"
+    },
+    {
+      "id": "8bd805ac606a4afd9002d00d58023d7ad",
+      "modelId": "5a062acf6aeb44558bda64df1797722d",
+      "sourceName": "数字机关业务推广净收入",
+      "sourceInputType": "number",
+      "sourceCode": "3112e0982a6f4003976e519490fcbe34"
+    },
+    {
+      "id": "cd49f80caba24841b0f40a433c61d445",
+      "modelId": "5a062acf6aeb44558bda64df1797722d",
+      "sourceName": "共性业务包签约合同金额",
+      "sourceInputType": "number",
+      "sourceCode": "f2421dbb3c3345f7848c3fac01dccff7"
+    }
+
+  ],
+  "indicators": [
+    {
+      "id": "4bbeb5cfda8849fd846b10d5f1e9b947",
+      "indiName": "团队完成率[60%<=团队任务完成率<80%]",
+      "indiComment": "团队完成率[60%<=团队任务完成率<80%]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * 0.5",
+      "indiIf": "0.6 <= ${b106cea80b164671ab30ed9ba5926276} < 0.8",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "126dae7cf51d4195b5fcaf1142d8df6a",
+      "indiName": "团队完成率[80%<=团队任务完成率<100%]",
+      "indiComment": "团队完成率[80%<=团队任务完成率<100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * 1",
+      "indiIf": "0.8 <= ${b106cea80b164671ab30ed9ba5926276} < 1.0",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "8bf5bbd327584ca08f5a1c359f47e705",
+      "indiName": "团队完成率[100%<=团队任务完成率]",
+      "indiComment": "团队完成率[100%<=团队任务完成率]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * 1.1",
+      "indiIf": "1.0 <= ${b106cea80b164671ab30ed9ba5926276}",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "c3bd0939d2f34d80a05afd93b4bdd00b",
+      "indiName": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiComment": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * (${907701efe05f4af7a7a751062b3277c6dd}/100)",
+      "indiIf": "60 <= ${907701efe05f4af7a7a751062b3277c6dd} < 80",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "6bd46ba1e3e74e1392e9caa48f34aa67",
+      "indiName": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiComment": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * 1",
+      "indiIf": "80 <= ${907701efe05f4af7a7a751062b3277c6dd} < 90",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "5b593f987b1447d1a67db39fc50bbb87",
+      "indiName": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiComment": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiType": "normal",
+      "indiCalculateStr": "15000 * 0.5 * 1.3",
+      "indiIf": "90 <= ${907701efe05f4af7a7a751062b3277c6dd}",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "d31a94b84c6b44af82e757e29e9728c5",
+      "indiName": "数字机关业务包当年净收入[1000000<=数字机关业务包当年净收入<2000000]",
+      "indiComment": "数字机关业务包当年净收入[1000000<=数字机关业务包当年净收入<2000000]",
+      "indiType": "normal",
+      "indiCalculateStr": "${3112e0982a6f4003976e519490fcbe34} * 0.005",
+      "indiIf": "1000000 <= ${3112e0982a6f4003976e519490fcbe34} < 2000000",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "333b60436b314472b64dc284fd472c83",
+      "indiName": "数字机关业务包当年净收入[2000000<=数字机关业务包当年净收入<4000000]",
+      "indiComment": "数字机关业务包当年净收入[2000000<=数字机关业务包当年净收入<4000000]",
+      "indiType": "normal",
+      "indiCalculateStr": "${3112e0982a6f4003976e519490fcbe34} * 0.01",
+      "indiIf": "2000000 <= ${3112e0982a6f4003976e519490fcbe34} < 4000000",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "541ef82e444e4e6ea2568fc8f1bd891c",
+      "indiName": "数字机关业务包当年净收入[4000000<=数字机关业务包当年净收入<6000000]",
+      "indiComment": "数字机关业务包当年净收入[4000000<=数字机关业务包当年净收入<6000000]",
+      "indiType": "normal",
+      "indiCalculateStr": "${3112e0982a6f4003976e519490fcbe34} * 0.012",
+      "indiIf": "4000000 <= ${3112e0982a6f4003976e519490fcbe34} < 6000000",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "51cb293bdd2d4d94ad1a7e1c7ae060dd",
+      "indiName": "数字机关业务包当年净收入[6000000<=数字机关业务包当年净收入]",
+      "indiComment": "数字机关业务包当年净收入[6000000<=数字机关业务包当年净收入]",
+      "indiType": "normal",
+      "indiCalculateStr": "${3112e0982a6f4003976e519490fcbe34} * 0.015",
+      "indiIf": "6000000 <= ${3112e0982a6f4003976e519490fcbe34}",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    },
+    {
+      "id": "53a1acfed20f4a9c8fc60d1ba3f7061a",
+      "indiName": "共性业务包签约合同收入",
+      "indiComment": "共性业务包签约合同收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${f2421dbb3c3345f7848c3fac01dccff7} * 0.002",
+      "indiIf": "0 < ${f2421dbb3c3345f7848c3fac01dccff7}",
+      "modelId": "5a062acf6aeb44558bda64df1797722d"
+    }
+  ]
+}

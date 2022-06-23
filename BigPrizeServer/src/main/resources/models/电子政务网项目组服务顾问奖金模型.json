@@ -1,0 +1,39 @@
+{
+  "id": "99704c06cd744f04a115f9d78bf7cf46",
+  "name": "电子政务项目服务站服务顾问奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "2b258a12a8734b5491bcac2a208a099d",
+      "modelId": "99704c06cd744f04a115f9d78bf7cf46",
+      "sourceName": "月基础薪资[单月]",
+      "sourceInputType": "number",
+      "sourceCode": "c169695e4f694ca2a4ce400e21bb2528"
+    },
+    {
+      "id": "ae2e7968baa74f4a8b9cd3c2f6803a8c",
+      "modelId": "99704c06cd744f04a115f9d78bf7cf46",
+      "sourceName": "在岗月份",
+      "sourceInputType": "number",
+      "sourceCode": "b81a1066744e41e192efa394969030b6"
+    },
+    {
+      "id": "6f58a6a36ae4495aa530b12d1c46d80a",
+      "modelId": "99704c06cd744f04a115f9d78bf7cf46",
+      "sourceName": "全年绩效考核指标分数平均完成率",
+      "sourceInputType": "percent",
+      "sourceCode": "a01b9ac551914a499ab1c95842a506bd"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "2a2a3ab17699406a9612d503081bf90d",
+      "indiName": "公共奖金",
+      "indiComment": "全年绩效考核指标分数平均完成率*(2个月基础薪资/12*在岗月份）",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${c169695e4f694ca2a4ce400e21bb2528} * 2 / 12 ) * ${b81a1066744e41e192efa394969030b6} * ${a01b9ac551914a499ab1c95842a506bd}",
+      "indiIf": "",
+      "modelId": "99704c06cd744f04a115f9d78bf7cf46"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * 奖金模型计算API
@@ -87,7 +88,7 @@ public class PrizeCalResource {
                 calculateResult.setIndiName(indicator.getIndiName());
                 calculateResult.setResult(laddersBonus);
                 calculateResults.add(calculateResult);
-            }else {
+            }else if (indiType.equals(BonusCalculateConstant.BONUS_CALCULATE_TYPE_NORMAL)){
                 String ifFormul = indicator.getIndiIf();
                 // 针对每个指标进行公式计算,首先要确认条件
                 if (Boolean.parseBoolean(String.valueOf(getFormulResult(inputSourceList,ifFormul)))){
@@ -102,10 +103,29 @@ public class PrizeCalResource {
                 }
             }
         }
+        List<BonusCalculateIndicator> decreaseIndicator = getDecreaseIndicator(indicators);
+        for (BonusCalculateIndicator indicator : decreaseIndicator) {
+            String ifFormul = indicator.getIndiIf();
+            // 针对每个指标进行公式计算,首先要确认条件
+            if (Boolean.parseBoolean(String.valueOf(getFormulResult(inputSourceList,ifFormul)))){
+                String calFormul = indicator.getIndiCalculateStr();
+                // 增加结果到返回数据中,后面要模拟给到一个计算过程
+                BigDecimal countNum = calCount(calculateResults);
+                BigDecimal decraseNum = countNum.multiply(NumberUtils.createBigDecimal(String.valueOf(getFormulResult(inputSourceList,calFormul))));
+                BonusCalculateResult calculateResult = new BonusCalculateResult();
+                calculateResult.setIndiName(indicator.getIndiName());
+                calculateResult.setResult(NumberUtils.createBigDecimal(String.valueOf(decraseNum)));
+                calculateResults.add(calculateResult);
+            }
+        }
         // 保存结果到数据集中
         model.setCalculateResults(calculateResults);
         model.setCount(calCount(calculateResults));
         return model;
+    }
+
+    private List<BonusCalculateIndicator> getDecreaseIndicator(List<BonusCalculateIndicator> indicators) {
+       return indicators.stream().filter(indicator -> indicator.getIndiType().equals(BonusCalculateConstant.BONUS_CALCULATE_TYPE_DECREASE)).collect(Collectors.toList());
     }
 
 
@@ -247,9 +267,5 @@ public class PrizeCalResource {
 
     public void setScriptEngineManager(ScriptEngineManager scriptEngineManager) {
         this.scriptEngineManager = scriptEngineManager;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(UUIDUtils.getUUIDString());
     }
 }

@@ -1,0 +1,41 @@
+{
+  "id": "cbd32c5de101447daf261e62646654d1",
+  "name": "常规运维服务部运维顾问奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "6388759050914d7baba57c5a5aef5766",
+      "modelId": "cbd32c5de101447daf261e62646654d1",
+      "sourceName": "常规老客户收入",
+      "sourceInputType": "number",
+      "sourceCode": "4383868422624266947ec10e018f1328"
+    },
+    {
+      "id": "1859add6113d4a1ab89cb824d586b91f",
+      "modelId": "cbd32c5de101447daf261e62646654d1",
+      "sourceName": "常规老客户确权运维收入",
+      "sourceInputType": "number",
+      "sourceCode": "c5eb2185aae0453ba1d63f40b01b30a6"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "7c9b2260303a438791a71a07665ae939",
+      "indiName": "常规老客户收入",
+      "indiComment": "常规老客户收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${4383868422624266947ec10e018f1328} * 0.0025",
+      "indiIf": "${4383868422624266947ec10e018f1328} > 0",
+      "modelId": "7c9b2260303a438791a71a07665ae939"
+    },
+    {
+      "id": "14b785fa08b740b1b2a7fe440945028c",
+      "indiName": "常规老客户确权运维收入",
+      "indiComment": "常规老客户确权运维收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${c5eb2185aae0453ba1d63f40b01b30a6} * 0.02",
+      "indiIf": "${c5eb2185aae0453ba1d63f40b01b30a6} > 0",
+      "modelId": "cbd32c5de101447daf261e62646654d1"
+    }
+  ]
+}

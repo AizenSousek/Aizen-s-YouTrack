@@ -1,0 +1,54 @@
+{
+  "id": "c7e922efb5134331ac1e77936d41a033",
+  "name": "生态与分销-渠道支持奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "caf85d7da55242aa9e3d5041910fd2e3",
+      "modelId": "c7e922efb5134331ac1e77936d41a033",
+      "sourceName": "支持出货权责额",
+      "sourceInputType": "number",
+      "sourceCode": "02775932b8be413691aca8010a1d6f80"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "40b8db74ced043948e49784d475dbdab",
+      "indiName": "支持出货权责额",
+      "indiComment": "支持出货权责额",
+      "indiType": "ladder",
+      "ladders": [
+        {
+          "id": "22f276e5e99444439bc061fe61156bff",
+          "indiId": "40b8db74ced043948e49784d475dbdab",
+          "minLadder": "0",
+          "maxLadder": "8000000",
+          "calculateSource": "02775932b8be413691aca8010a1d6f80",
+          "indiCalculateStr": "( ${02775932b8be413691aca8010a1d6f80} - 8000000 ) * 0.01",
+          "maxLadderCalculateStr": "8000000 * 0.01"
+        },
+        {
+          "id": "6bfdb6089cd34adfb2b3d8b19b8a4d5c",
+          "indiId": "40b8db74ced043948e49784d475dbdab",
+          "minLadder": "8000000",
+          "maxLadder": "10000000",
+          "calculateSource": "02775932b8be413691aca8010a1d6f80",
+          "indiCalculateStr": "( ${02775932b8be413691aca8010a1d6f80} - 8000000 ) * 0.015",
+          "maxLadderCalculateStr": "( 10000000 - 8000000 ) * 0.015"
+        },
+        {
+          "id": "08a957631c644ed4935f6825aaed276b",
+          "indiId": "40b8db74ced043948e49784d475dbdab",
+          "minLadder": "10000000",
+          "maxLadder": "100000000",
+          "calculateSource": "02775932b8be413691aca8010a1d6f80",
+          "indiCalculateStr": "( ${02775932b8be413691aca8010a1d6f80} - 10000000 ) * 0.02",
+          "maxLadderCalculateStr": "( 100000000 - 10000000 ) * 0.02"
+        }
+      ],
+      "indiCalculateStr": "",
+      "indiIf": "",
+      "modelId": "c7e922efb5134331ac1e77936d41a033"
+    }
+  ]
+}

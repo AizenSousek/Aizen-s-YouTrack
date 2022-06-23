@@ -1,0 +1,66 @@
+{
+  "id": "06c5f38d5003463196c820dd3d0b98cc",
+  "name": "营销中心战略合作总监奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "c2b70d531d33424cba894bfb941e71fd",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc",
+      "sourceName": "净收入目标金额",
+      "sourceInputType": "number",
+      "sourceCode": "b46700e2575c42968e470f53e1e8a4a5"
+    },
+    {
+      "id": "364827c15d5f4c42b56e7722b25d14a8",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc",
+      "sourceName": "实际完成净收入金额",
+      "sourceInputType": "number",
+      "sourceCode": "37ef399b0e3f44edb7b8369ce6050be1"
+    },
+    {
+      "id": "7845c8669e284cdf849f39e8ad6b18d8",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc",
+      "sourceName": "大项目累计净收入",
+      "sourceInputType": "number",
+      "sourceCode": "95551904fe47432f9d431625db3bd92d"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "e2e9c5b339c34ef0ba2241756d7b2935",
+      "indiName": "全年实际净收入完成",
+      "indiComment": "不管是否达成任务目标都有计提",
+      "indiType": "normal",
+      "indiCalculateStr": "${37ef399b0e3f44edb7b8369ce6050be1} * 0.04",
+      "indiIf": "${37ef399b0e3f44edb7b8369ce6050be1} > 0",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc"
+    },
+    {
+      "id": "3a8921961fb14ef7920f08176bc0da36",
+      "indiName": "全年实际完成超过100%部分净收入",
+      "indiComment": "如果任务完成率>=100%，全额累计计提",
+      "indiType": "normal",
+      "indiCalculateStr": "${37ef399b0e3f44edb7b8369ce6050be1} * 0.005",
+      "indiIf": "${37ef399b0e3f44edb7b8369ce6050be1} >= ${b46700e2575c42968e470f53e1e8a4a5}",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc"
+    },
+    {
+      "id": "9253180577304b81a44f3b7e26564a7d",
+      "indiName": "绝对值超过250万部分的净收入",
+      "indiComment": "",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${37ef399b0e3f44edb7b8369ce6050be1} - 2500000 ) * 0.06",
+      "indiIf": "${37ef399b0e3f44edb7b8369ce6050be1} > 2500000",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc"
+    },
+    {
+      "id": "9d4acdefdb734e49962002ee9d4d1fdd",
+      "indiName": "大项目累计净收入",
+      "indiComment": "协同项目成交金额≥80万项目2022年收款累计",
+      "indiType": "normal",
+      "indiCalculateStr": "${95551904fe47432f9d431625db3bd92d} * 0.03",
+      "indiIf": "${95551904fe47432f9d431625db3bd92d} > 0",
+      "modelId": "06c5f38d5003463196c820dd3d0b98cc"
+    }
+  ]
+}

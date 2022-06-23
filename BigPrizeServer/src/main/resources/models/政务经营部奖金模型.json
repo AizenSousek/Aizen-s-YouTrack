@@ -1,0 +1,139 @@
+{
+  "id": "39b8086e0144409193e80a5ffd931673",
+  "name": "政务客户经营部客户经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "e028d43f1d104b76bd2cc89f673dd2b4",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "净收入目标金额",
+      "sourceInputType": "number",
+      "sourceCode": "6f0a61b9b9194adbb1b054e78819e130"
+    },
+    {
+      "id": "1fa22daaf850411b9e127073b1010e78",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "实际完成净收入金额",
+      "sourceInputType": "number",
+      "sourceCode": "96accfd854be46f3a7f4656758656a75"
+    },
+    {
+      "id": "3e148a46ecca415ea4acea07a890aab9",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "业务突破净收入金额",
+      "sourceInputType": "number",
+      "sourceCode": "7827ce95e66140cfadb88977cea3ffd1"
+    },
+    {
+      "id": "fa737bc3c4d148289d1cb7d667808219",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "新签约客户净收入金额",
+      "sourceInputType": "number",
+      "sourceCode": "2eb15b7c2051400b9d51836645cca571"
+    },
+    {
+      "id": "b7f8ee96bdbf4ea7b2f46a92c02fda7f",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "重点老客户目标金额",
+      "sourceInputType": "number",
+      "sourceCode": "d942157259da48329981529ffa361670"
+    },
+    {
+      "id": "d748f08e8c194fb7b3335f40dd978d4b",
+      "modelId": "39b8086e0144409193e80a5ffd931673",
+      "sourceName": "实际完成重点老客户收入金额",
+      "sourceInputType": "number",
+      "sourceCode": "8513dd3b7ad141cfaeb367a5a0c53fb2"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "53063d295a8b490b88a3cf5807cd2208",
+      "indiName": "净收入完成",
+      "indiComment": "净收入,按照阶梯计提",
+      "indiType": "ladder",
+      "ladders": [
+        {
+          "id": "e884a66b6b964db0a0681f502b0eda22",
+          "indiId": "53063d295a8b490b88a3cf5807cd2208",
+          "minLadder": "0",
+          "maxLadder": "1500000",
+          "calculateSource": "96accfd854be46f3a7f4656758656a75",
+          "indiCalculateStr": "${96accfd854be46f3a7f4656758656a75} * 0.02",
+          "maxLadderCalculateStr": "1500000 * 0.02"
+        }, {
+          "id": "78eb2c4261ce48aeb25c30bf4e135209",
+          "indiId": "53063d295a8b490b88a3cf5807cd2208",
+          "minLadder": "1500000",
+          "maxLadder": "2000000",
+          "calculateSource": "96accfd854be46f3a7f4656758656a75",
+          "indiCalculateStr": "( ${96accfd854be46f3a7f4656758656a75} - 1500000 ) * 0.03",
+          "maxLadderCalculateStr": "( 2000000 - 1500000 ) * 0.03"
+        }, {
+          "id": "1a2cafbd91f449e69de13bed82ffdbe2",
+          "indiId": "53063d295a8b490b88a3cf5807cd2208",
+          "minLadder": "2000000",
+          "maxLadder": "2500000",
+          "calculateSource": "96accfd854be46f3a7f4656758656a75",
+          "indiCalculateStr": "( ${96accfd854be46f3a7f4656758656a75} - 2000000 ) * 0.04",
+          "maxLadderCalculateStr": "( 2500000 - 2000000 ) * 0.04"
+        }, {
+          "id": "dab55b0b5a694fc1bd21243eba9ac3a8",
+          "indiId": "53063d295a8b490b88a3cf5807cd2208",
+          "minLadder": "2500000",
+          "maxLadder": "3000000",
+          "calculateSource": "96accfd854be46f3a7f4656758656a75",
+          "indiCalculateStr": "( ${96accfd854be46f3a7f4656758656a75} - 2500000 ) * 0.06",
+          "maxLadderCalculateStr": "( 3000000 - 2500000 ) * 0.06"
+        }, {
+          "id": "135e742e593e4317a7f19bdfdd73d781",
+          "indiId": "53063d295a8b490b88a3cf5807cd2208",
+          "minLadder": "3000000",
+          "maxLadder": "100000000",
+          "calculateSource": "96accfd854be46f3a7f4656758656a75",
+          "indiCalculateStr": "( ${96accfd854be46f3a7f4656758656a75} - 3000000 ) * 0.08",
+          "maxLadderCalculateStr": "( 100000000 - 3000000 ) * 0.08"
+        }
+      ],
+      "indiCalculateStr": "",
+      "indiIf": "",
+      "modelId": "39b8086e0144409193e80a5ffd931673"
+    },
+    {
+      "id": "ee170c176ca44d009095901535484c8e",
+      "indiName": "业务净收入",
+      "indiComment": "突破办公领域以外项目进行额外激励，参考政务经营MAP中服务解决方案和业务解决方案",
+      "indiType": "normal",
+      "indiCalculateStr": "${7827ce95e66140cfadb88977cea3ffd1} * 0.02",
+      "indiIf": "${7827ce95e66140cfadb88977cea3ffd1} > 0",
+      "modelId": "39b8086e0144409193e80a5ffd931673"
+    },
+    {
+      "id": "6ca5473d228f410da4f8b5f5311a3816",
+      "indiName": "新签客户净收入",
+      "indiComment": "不含贵州省政府公文系统扩展、云南省委加密狗客户新拓",
+      "indiType": "normal",
+      "indiCalculateStr": "${2eb15b7c2051400b9d51836645cca571} * 0.02",
+      "indiIf": "${2eb15b7c2051400b9d51836645cca571} > 0",
+      "modelId": "39b8086e0144409193e80a5ffd931673"
+    },
+    {
+      "id": "538bb13e766d40b68c588937c1b65a6e",
+      "indiName": "重点老客户任务完成正向收入",
+      "indiComment": "重点老客户任务完成正向收入",
+      "indiType": "normal",
+      "indiCalculateStr": "(${d942157259da48329981529ffa361670} + ( ${8513dd3b7ad141cfaeb367a5a0c53fb2} - ${d942157259da48329981529ffa361670} ) * 2 ) * 0.01",
+      "indiIf": "( ${d942157259da48329981529ffa361670} - ${8513dd3b7ad141cfaeb367a5a0c53fb2} ) <= 0",
+      "modelId": "39b8086e0144409193e80a5ffd931673"
+    },
+    {
+      "id": "5e15e890d3e14c34a9d64cd7ebcb6c5d",
+      "indiName": "重点老客户任务完成负向收入",
+      "indiComment": "重点老客户任务完成负向收入",
+      "indiType": "normal",
+      "indiCalculateStr": "( ( ${8513dd3b7ad141cfaeb367a5a0c53fb2} - ${d942157259da48329981529ffa361670} ) * 2 ) * -0.01",
+      "indiIf": "( ${d942157259da48329981529ffa361670} - ${8513dd3b7ad141cfaeb367a5a0c53fb2} ) > 0",
+      "modelId": "39b8086e0144409193e80a5ffd931673"
+    }
+  ]
+}

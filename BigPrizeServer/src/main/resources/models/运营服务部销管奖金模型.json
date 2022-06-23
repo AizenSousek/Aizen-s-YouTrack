@@ -1,0 +1,77 @@
+{
+  "id": "665eb89f58854c65b037b3325f398421",
+  "name": "运行服务部市场经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "ead6d02f2819420685b8535bfa4c8556",
+      "modelId": "665eb89f58854c65b037b3325f398421",
+      "sourceName": "区域净收入完成率",
+      "sourceInputType": "percent",
+      "sourceCode": "c2677bb874c84703b95d83c768522c48"
+    },
+    {
+      "id": "2a14079f17bd450583cd93b76c0f6baf",
+      "modelId": "665eb89f58854c65b037b3325f398421",
+      "sourceName": "全年个人平均绩效",
+      "sourceInputType": "number",
+      "sourceCode": "49aba5aa002c4b908695d0c2d03395ca"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "7b86c0f440b8437d87bae2c14346dbdb",
+      "indiName": "区域净收入完成率[80%<=区域净收入完成率<95%]",
+      "indiComment": "区域净收入完成率[80%<=区域净收入完成率<95%]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5",
+      "indiIf": "0.8 <= ${c2677bb874c84703b95d83c768522c48} < 0.95",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    },
+    {
+      "id": "b45a8d2461cc4ebfb107987af7688f79",
+      "indiName": "区域净收入完成率[95%<=区域净收入完成率<=100%]",
+      "indiComment": "区域净收入完成率[95%<=区域净收入完成率<=100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.2",
+      "indiIf": "0.95 <= ${c2677bb874c84703b95d83c768522c48} < 1.0",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    },
+    {
+      "id": "524c64398d774d0d81846468819a262d",
+      "indiName": "区域净收入完成率[105%<=区域净收入完成率]",
+      "indiComment": "区域净收入完成率[105%<=区域净收入完成率]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.5",
+      "indiIf": "1.05 <= ${c2677bb874c84703b95d83c768522c48}",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    },
+    {
+      "id": "56ccecc994dd48e1a4da9176c359e729",
+      "indiName": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiComment": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * (${49aba5aa002c4b908695d0c2d03395ca} / 100)",
+      "indiIf": "60 <= ${49aba5aa002c4b908695d0c2d03395ca} < 80",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    },
+    {
+      "id": "50364cfd4d924aeb99ee12189bad7906",
+      "indiName": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiComment": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1",
+      "indiIf": "80 <= ${49aba5aa002c4b908695d0c2d03395ca} < 90",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    },
+    {
+      "id": "759a87bc947f4fe8b0e37a73d34befe1",
+      "indiName": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiComment": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.3",
+      "indiIf": "90 <= ${49aba5aa002c4b908695d0c2d03395ca}",
+      "modelId": "665eb89f58854c65b037b3325f398421"
+    }
+  ]
+}

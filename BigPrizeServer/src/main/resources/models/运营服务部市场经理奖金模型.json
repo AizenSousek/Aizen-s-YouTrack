@@ -1,0 +1,109 @@
+{
+  "id": "94b2eb5fd0c4421191deb3292f771cc0",
+  "name": "运行服务部市场经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "14f4482b65964520bfb8293b52c88bf7",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0",
+      "sourceName": "区域净收入完成率",
+      "sourceInputType": "percent",
+      "sourceCode": "969fe858b01d4a1eb57e778f939df6a5"
+    },
+    {
+      "id": "72f661b3293d41c6990c5a7a52e4d82c",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0",
+      "sourceName": "全年个人平均绩效",
+      "sourceInputType": "number",
+      "sourceCode": "546ff711936b405ea54a593a0f6c3aab"
+    },
+    {
+      "id": "045a3f396ccd4cec82b3bf738c1a6d4b",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0",
+      "sourceName": "商机推送个数",
+      "sourceInputType": "number",
+      "sourceCode": "78cb144be9134767be7cde4bdea4c7bf"
+    },
+    {
+      "id": "6754a193256f4338b09dbb245781c8dd",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0",
+      "sourceName": "商机成交总金额",
+      "sourceInputType": "number",
+      "sourceCode": "74de90b46763495a9361fa22e15d3950"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "e92a7d719b444b69b0f36e30227cd212",
+      "indiName": "区域净收入完成率[80%<=区域净收入完成率<95%]",
+      "indiComment": "区域净收入完成率[80%<=区域净收入完成率<95%]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5",
+      "indiIf": "0.8 <= ${969fe858b01d4a1eb57e778f939df6a5} < 0.95",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "58c6651df0ca4b2990779e3f93f2908d",
+      "indiName": "区域净收入完成率[95%<=区域净收入完成率<=100%]",
+      "indiComment": "区域净收入完成率[95%<=区域净收入完成率<=100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.2",
+      "indiIf": "0.95 <= ${969fe858b01d4a1eb57e778f939df6a5} < 1.0",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "daf7947a5530456f8a5e2f844d00aea6",
+      "indiName": "区域净收入完成率[105%<=区域净收入完成率]",
+      "indiComment": "区域净收入完成率[105%<=区域净收入完成率]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.5",
+      "indiIf": "1.05 <= ${969fe858b01d4a1eb57e778f939df6a5}",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "52a1c658bdde435ba8030adbd66a7381",
+      "indiName": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiComment": "全年个人平均绩效分数[60<=全年个人平均绩效分数<80]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * (${907701efe05f4af7a7a751062b3277c6dd}/100)",
+      "indiIf": "60 <= ${546ff711936b405ea54a593a0f6c3aab} < 80",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "f6eead3851744702b1c3125463db1fb6",
+      "indiName": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiComment": "全年个人平均绩效分数[80<=全年个人平均绩效分数<90]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1",
+      "indiIf": "80 <= ${546ff711936b405ea54a593a0f6c3aab} < 90",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "577453b5bbc3420cb2cfe8ec283bdb54",
+      "indiName": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiComment": "全年个人平均绩效分数[90<=全年个人平均绩效分数]",
+      "indiType": "normal",
+      "indiCalculateStr": "30000 * 0.5 * 1.3",
+      "indiIf": "90 <= ${546ff711936b405ea54a593a0f6c3aab}",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "40d7beb648d84187b35d13dbbde61f19",
+      "indiName": "有效商机推送",
+      "indiComment": "有效商机推送[一个500]",
+      "indiType": "normal",
+      "indiCalculateStr": "${78cb144be9134767be7cde4bdea4c7bf} * 500",
+      "indiIf": "${78cb144be9134767be7cde4bdea4c7bf} > 0",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    },
+    {
+      "id": "7e07af358d914ba0b5cd970bb4756818",
+      "indiName": "商机成交激励",
+      "indiComment": "商机成交激励",
+      "indiType": "normal",
+      "indiCalculateStr": "${74de90b46763495a9361fa22e15d3950} * 0.1",
+      "indiIf": "${74de90b46763495a9361fa22e15d3950} > 0",
+      "modelId": "94b2eb5fd0c4421191deb3292f771cc0"
+    }
+  ]
+}

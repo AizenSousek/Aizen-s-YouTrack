@@ -1,0 +1,173 @@
+{
+  "id": "253dbe72b233469faf585cd0a858aa6c",
+  "name": "生态与分销-拓展经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "e936abc6078e457ea2dc65a0afc82b57",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "净收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "423bee5d97174d6693dc43cdeac5fb82"
+    },
+    {
+      "id": "b2464802f7fd4e8fa80d4c88081294c4",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "净收入实际完成",
+      "sourceInputType": "number",
+      "sourceCode": "cff5c6b4f47446098a4ff338878d1bcb"
+    },
+    {
+      "id": "9f9c7707d67d46c999ce51a793b896dc",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "权责收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "147601ea75054c7ab267e4657cf738c5"
+    },
+    {
+      "id": "b65b2ff2a4b341328215d8f482e4984b",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "权责收入完成",
+      "sourceInputType": "number",
+      "sourceCode": "a854a38c8313410ca86bb92de7030799"
+    },
+    {
+      "id": "89432909d1d94f5c854ee196cc1a8f72",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "空白区域新签约净收入",
+      "sourceInputType": "number",
+      "sourceCode": "a3b9594e23b248bd92113cd30e84935a"
+    },
+    {
+      "id": "d5e58417340345cea1e8438160b0b8cf",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "新渠道权责收入",
+      "sourceInputType": "number",
+      "sourceCode": "62a24667b29e424b846d22e76be38172"
+    },
+    {
+      "id": "156ac1833e064815a485455cbeb7f700",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "新渠道收付收入",
+      "sourceInputType": "number",
+      "sourceCode": "f4c9deed55eb420a8ec05872bf3662c0"
+    },
+    {
+      "id": "b4ff0467b7ff4af4a4149d1f94f6919b",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c",
+      "sourceName": "新拓指标完成率",
+      "sourceInputType": "percent",
+      "sourceCode": "45a3761335ed4da883cd3a36c0f54cbf"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "1e64cbce864c4b39964fe60eeee2b2d1",
+      "indiName": "净收入完成[0-100%]",
+      "indiComment": "净收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${cff5c6b4f47446098a4ff338878d1bcb} * 0.02",
+      "indiIf": "${cff5c6b4f47446098a4ff338878d1bcb} <= ${423bee5d97174d6693dc43cdeac5fb82}",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "6210b0b1335c4617b640d7879e801cc0",
+      "indiName": "净收入完成[100%以上]",
+      "indiComment": "净收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${cff5c6b4f47446098a4ff338878d1bcb} - ${423bee5d97174d6693dc43cdeac5fb82} } * 0.03",
+      "indiIf": "${cff5c6b4f47446098a4ff338878d1bcb} > ${423bee5d97174d6693dc43cdeac5fb82}",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "47396b2edc4442768879ab245450b8d2",
+      "indiName": "净收入绝对值超过250W部分收入",
+      "indiComment": "净收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${cff5c6b4f47446098a4ff338878d1bcb} - 2500000 ) * 0.02",
+      "indiIf": "${cff5c6b4f47446098a4ff338878d1bcb} > 2500000",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "94b4e014ff74499287e7e852e1b9266b",
+      "indiName": "权责收入完成[0-100%]",
+      "indiComment": "权责收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${a854a38c8313410ca86bb92de7030799} * 0.02",
+      "indiIf": "${a854a38c8313410ca86bb92de7030799} <= ${147601ea75054c7ab267e4657cf738c5}",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "17d849d4d5154bf59277008a87ef6250",
+      "indiName": "权责收入完成[100%以上]",
+      "indiComment": "权责收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${a854a38c8313410ca86bb92de7030799} - ${147601ea75054c7ab267e4657cf738c5} } * 0.04",
+      "indiIf": "${a854a38c8313410ca86bb92de7030799} > ${147601ea75054c7ab267e4657cf738c5}",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "8aaf78b2e40f4253afbc632fbee1ec24",
+      "indiName": "权责收入绝对值超过250W部分收入",
+      "indiComment": "权责收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": " ( ${a854a38c8313410ca86bb92de7030799} - 2500000 ) * 0.04",
+      "indiIf": "${a854a38c8313410ca86bb92de7030799} > 2500000",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "8936b6f623b3499e8328228c463fc867",
+      "indiName": "空白区域新签约净收入",
+      "indiComment": "空白区域新签约净收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${a3b9594e23b248bd92113cd30e84935a} * 0.02",
+      "indiIf": "${a3b9594e23b248bd92113cd30e84935a} > 0",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "25906c9b02954832baf0d53d5453e37f",
+      "indiName": "新渠道权责收入",
+      "indiComment": "新渠道权责收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${62a24667b29e424b846d22e76be38172} * 0.02",
+      "indiIf": "${62a24667b29e424b846d22e76be38172} > 0",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "39b2ac18ab9340b5ade325ada30ceeff",
+      "indiName": "新渠道收付收入",
+      "indiComment": "新渠道收付收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${f4c9deed55eb420a8ec05872bf3662c0} * 0.02",
+      "indiIf": "${f4c9deed55eb420a8ec05872bf3662c0} > 0",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "ecc249fac4d64ea1abd0cdf2e8de22cd",
+      "indiName": "新拓指标完成率[新拓指标完成率 < 50%]",
+      "indiComment": "新拓指标完成率[新拓指标完成率 < 50%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "-1",
+      "indiIf": "${45a3761335ed4da883cd3a36c0f54cbf} < 0.5",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "9ebc6897d0ba4fccb674b01a622ae349",
+      "indiName": "新拓指标完成率[50% <= 新拓指标完成率 < 100%]",
+      "indiComment": "新拓指标完成率[50% <= 新拓指标完成率 < 100%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0",
+      "indiIf": "0.5 <= ${45a3761335ed4da883cd3a36c0f54cbf} < 1.0",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    },
+    {
+      "id": "1ba330cf9acd4dc0bf19b5201a8be50d",
+      "indiName": "新拓指标完成率[新拓指标完成率 >= 100%]",
+      "indiComment": "新拓指标完成率[新拓指标完成率 >= 100%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0.1",
+      "indiIf": "1.0 <= ${45a3761335ed4da883cd3a36c0f54cbf}",
+      "modelId": "253dbe72b233469faf585cd0a858aa6c"
+    }
+  ]
+}

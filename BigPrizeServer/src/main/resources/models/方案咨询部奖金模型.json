@@ -1,0 +1,86 @@
+{
+  "id": "53a20ce941654e90b4a3d830295c05e0",
+  "name": "方案咨询部奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "c377cc55cbeb4f73a3e314547eb4e0b3",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0",
+      "sourceName": "直销支持签约合同额",
+      "sourceInputType": "number",
+      "sourceCode": "7345d823e0ba445f84f2eed8114f0488"
+    },
+    {
+      "id": "b54350b2155743d6bc43a85ddbee9917",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0",
+      "sourceName": "分销项目签约合同额",
+      "sourceInputType": "number",
+      "sourceCode": "8e96d3ced9044232b6eaea2fb391b313"
+    },
+    {
+      "id": "23ee0fa6835a4e209b9502be85121cc3",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0",
+      "sourceName": "企业重点及指明客户收入增量",
+      "sourceInputType": "number",
+      "sourceCode": "49c3bf389adb48f38543465c28d87b8a"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "7543ed12290e4583b44533353609aa15",
+      "indiName": "分销项目签约合同额",
+      "indiComment": "针对分销项目单独核算奖金",
+      "indiType": "normal",
+      "indiCalculateStr": "${8e96d3ced9044232b6eaea2fb391b313} * 0.005",
+      "indiIf": "${8e96d3ced9044232b6eaea2fb391b313} > 0",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0"
+    },
+    {
+      "id": "9ef32dcf5f53442da023119691c538a6",
+      "indiName": "企业重点及指明客户收入增量",
+      "indiComment": "区域指明及重点客户收入增量",
+      "indiType": "normal",
+      "indiCalculateStr": "${49c3bf389adb48f38543465c28d87b8a} * 0.03",
+      "indiIf": "${49c3bf389adb48f38543465c28d87b8a} > 0",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0"
+    },
+    {
+      "id": "c998f87648304efb91ebb9783f8b0cf4",
+      "indiName": "直销支持签约合同额",
+      "indiComment": "直销支持签约合同额",
+      "indiType": "ladder",
+      "ladders": [
+        {
+          "id": "6b98a69d893e43b7b04c3e86ec8b3688",
+          "indiId": "c998f87648304efb91ebb9783f8b0cf4",
+          "minLadder": "0",
+          "maxLadder": "8000000",
+          "calculateSource": "7345d823e0ba445f84f2eed8114f0488",
+          "indiCalculateStr": "( ${7345d823e0ba445f84f2eed8114f0488} - 8000000 ) * 0.0075",
+          "maxLadderCalculateStr": "8000000 * 0.01"
+        },
+        {
+          "id": "94a7f474927242e88933a10f7906f8e7",
+          "indiId": "c998f87648304efb91ebb9783f8b0cf4",
+          "minLadder": "8000000",
+          "maxLadder": "10000000",
+          "calculateSource": "7345d823e0ba445f84f2eed8114f0488",
+          "indiCalculateStr": "( ${7345d823e0ba445f84f2eed8114f0488} - 8000000 ) * 0.01",
+          "maxLadderCalculateStr": "( 10000000 - 8000000 ) * 0.015"
+        },
+        {
+          "id": "0c7d01750c3b48e6a61ffe2059675760",
+          "indiId": "c998f87648304efb91ebb9783f8b0cf4",
+          "minLadder": "10000000",
+          "maxLadder": "100000000",
+          "calculateSource": "7345d823e0ba445f84f2eed8114f0488",
+          "indiCalculateStr": "( ${7345d823e0ba445f84f2eed8114f0488} - 10000000 ) * 0.012",
+          "maxLadderCalculateStr": "( 100000000 - 10000000 ) * 0.02"
+        }
+      ],
+      "indiCalculateStr": "",
+      "indiIf": "",
+      "modelId": "53a20ce941654e90b4a3d830295c05e0"
+    }
+  ]
+}

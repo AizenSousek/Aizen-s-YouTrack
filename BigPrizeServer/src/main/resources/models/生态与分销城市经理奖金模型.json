@@ -1,0 +1,173 @@
+{
+  "id": "671399966f6a44d8bbfbbe2dab650019",
+  "name": "生态与分销-城市经理奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "7917684522ba4e9da1a71891ed4e6ce1",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "净收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "1f7c23a3999e4ced831b894d73133920"
+    },
+    {
+      "id": "09de56a2fb634c7fa5e38e27892c75ad",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "净收入实际完成",
+      "sourceInputType": "number",
+      "sourceCode": "aff3aa70638948d5879c7b2fa09f7caf"
+    },
+    {
+      "id": "d454cdc514cb4d71b5ddc40cb860512d",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "权责收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "2d16dcffc04048ee96e8748ab5ecbfc5"
+    },
+    {
+      "id": "ab93ee2eb4ab48f4ae7a60f087cdcd25",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "权责收入完成",
+      "sourceInputType": "number",
+      "sourceCode": "5a78dd57e1f34de48732325c4687cc46"
+    },
+    {
+      "id": "0bab176187484b88a820b83d05366441",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "空白区域新签约净收入",
+      "sourceInputType": "number",
+      "sourceCode": "140f287eb1a645569810bdd64fc541b3"
+    },
+    {
+      "id": "6db20bc8a7a04020bb97c4f8b1ddadde",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "新渠道权责收入",
+      "sourceInputType": "number",
+      "sourceCode": "bf4793c51b38470ca080bcb4582e4177"
+    },
+    {
+      "id": "bc07a57e56a3435f96b7a35296cf4c1b",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "新渠道收付收入",
+      "sourceInputType": "number",
+      "sourceCode": "e1a2be0e4a4242e1a6bd4225dfb9cbde"
+    },
+    {
+      "id": "b4ff0467b7ff4af4a4149d1f94f6919b",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019",
+      "sourceName": "井田空白城市覆盖率",
+      "sourceInputType": "percent",
+      "sourceCode": "5bd39185a0d24a6da19cc7145ea0e790"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "04f84169f74e4339ac74618708d2fb21",
+      "indiName": "净收入完成[0-100%]",
+      "indiComment": "净收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${aff3aa70638948d5879c7b2fa09f7caf} * 0.02",
+      "indiIf": "${aff3aa70638948d5879c7b2fa09f7caf} <= ${1f7c23a3999e4ced831b894d73133920}",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "04f84169f74e4339ac74618708d2fb21",
+      "indiName": "净收入完成[100%以上]",
+      "indiComment": "净收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${aff3aa70638948d5879c7b2fa09f7caf} - ${1f7c23a3999e4ced831b894d73133920} } * 0.03",
+      "indiIf": "${aff3aa70638948d5879c7b2fa09f7caf} > ${1f7c23a3999e4ced831b894d73133920}",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "7200cc116df24d75aa5eb8fdf84c03c7",
+      "indiName": "净收入绝对值超过250W部分收入",
+      "indiComment": "净收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${aff3aa70638948d5879c7b2fa09f7caf} - 2500000 ) * 0.02",
+      "indiIf": "${aff3aa70638948d5879c7b2fa09f7caf} > 2500000",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "2d90a74d92cf4004ace439bc126e2a06",
+      "indiName": "权责收入完成[0-100%]",
+      "indiComment": "权责收入完成[0-100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${5a78dd57e1f34de48732325c4687cc46} * 0.02",
+      "indiIf": "${5a78dd57e1f34de48732325c4687cc46} <= ${2d16dcffc04048ee96e8748ab5ecbfc5}",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "91c1f6b879a448d2a1da3b40944db752",
+      "indiName": "权责收入完成[100%以上]",
+      "indiComment": "权责收入完成[100%以上]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${5a78dd57e1f34de48732325c4687cc46} - ${2d16dcffc04048ee96e8748ab5ecbfc5} } * 0.04",
+      "indiIf": "${5a78dd57e1f34de48732325c4687cc46} > ${2d16dcffc04048ee96e8748ab5ecbfc5}",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "3027c2f25c9b4dfe9211b2da49b0072d",
+      "indiName": "权责收入绝对值超过250W部分收入",
+      "indiComment": "权责收入绝对值超过250W部分收入",
+      "indiType": "normal",
+      "indiCalculateStr": " ( ${5a78dd57e1f34de48732325c4687cc46} - 2500000 ) * 0.04",
+      "indiIf": "${5a78dd57e1f34de48732325c4687cc46} > 2500000",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "ae8b8dca5f5d41d3b99bf5a0ddb2e55c",
+      "indiName": "空白区域新签约净收入",
+      "indiComment": "空白区域新签约净收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${140f287eb1a645569810bdd64fc541b3} * 0.02",
+      "indiIf": "${140f287eb1a645569810bdd64fc541b3} > 0",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "5963f64d372e43428b822b6b5125058f",
+      "indiName": "新渠道权责收入",
+      "indiComment": "新渠道权责收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${bf4793c51b38470ca080bcb4582e4177} * 0.02",
+      "indiIf": "${bf4793c51b38470ca080bcb4582e4177} > 0",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "2bdd8b17332d485da5f8a3dc3efa80d6",
+      "indiName": "新渠道收付收入",
+      "indiComment": "新渠道收付收入",
+      "indiType": "normal",
+      "indiCalculateStr": "${e1a2be0e4a4242e1a6bd4225dfb9cbde} * 0.02",
+      "indiIf": "${e1a2be0e4a4242e1a6bd4225dfb9cbde} > 0",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "8cf995835a854cf8ba68f0eac1a159fb",
+      "indiName": "井田空白城市覆盖率[井田空白城市覆盖率 < 70%]",
+      "indiComment": "井田空白城市覆盖率调节奖金系数[井田空白城市覆盖率 < 70%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "-0.1",
+      "indiIf": "${5bd39185a0d24a6da19cc7145ea0e790} < 0.7",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "a6623c9d551f4504a6016c264c8617ff",
+      "indiName": "井田空白城市覆盖率[70% <= 井田空白城市覆盖率 < 100%]",
+      "indiComment": "井田空白城市覆盖率调节奖金系数[70% <= 井田空白城市覆盖率 < 100%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0",
+      "indiIf": "0.7 <= ${5bd39185a0d24a6da19cc7145ea0e790} < 1.0",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    },
+    {
+      "id": "1ba330cf9acd4dc0bf19b5201a8be50d",
+      "indiName": "井田空白城市覆盖率[井田空白城市覆盖率 >= 100%]",
+      "indiComment": "井田空白城市覆盖率调节奖金系数[井田空白城市覆盖率 >= 100%]",
+      "indiType": "adjust",
+      "indiCalculateStr": "0.1",
+      "indiIf": "1.0 <= ${5bd39185a0d24a6da19cc7145ea0e790}",
+      "modelId": "671399966f6a44d8bbfbbe2dab650019"
+    }
+  ]
+}

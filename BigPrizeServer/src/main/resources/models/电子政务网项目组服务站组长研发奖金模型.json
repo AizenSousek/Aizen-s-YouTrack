@@ -1,0 +1,111 @@
+{
+  "id": "efdaf3c901c44407af86033dcb9c7424",
+  "name": "电子政务网项目组服务站组长奖金模型",
+  "remark": "",
+  "inputSourceList": [
+    {
+      "id": "da94274e04a64a818a813ee96a2cf77f",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "片区运维权责收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "fe85864dd0c944b1a1b615e99e88d63d"
+    },
+    {
+      "id": "f7c6939f4c404584a376d7145c98ba7a",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "片区运维权责收入实际完成",
+      "sourceInputType": "number",
+      "sourceCode": "ba291a9ff84f449e833b03bcf17dbd0a"
+    },
+    {
+      "id": "a26595bdb54746b1abd87edb1b3bd835",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "二级单位应用推广收入目标",
+      "sourceInputType": "number",
+      "sourceCode": "9adf345469e64785a52b58aefd512702"
+    },
+    {
+      "id": "9ecf57b573b04000ac5182c42b6c18b9",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "二级单位应用推广收入实际完成",
+      "sourceInputType": "number",
+      "sourceCode": "b106cea80b164671ab30ed9ba5926276"
+    },
+    {
+      "id": "c862eea95d464a7eb94964f72da50b25",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "内部有效投诉扣减次数",
+      "sourceInputType": "number",
+      "sourceCode": "634c2b0cccb54be0bea65e19a02a7663"
+    },
+    {
+      "id": "7d75bd60f4744ce78d5a7f43b39b695c",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424",
+      "sourceName": "外部有效投诉扣减次数",
+      "sourceInputType": "number",
+      "sourceCode": "81b0b6cdf002468c993751204bac6bb1"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "1943abf77e2c4175be2a3aa72b3ceb52",
+      "indiName": "片区运维权责收入[80%<=完成目标<100%]",
+      "indiComment": "片区运维权责收入[80%<=完成目标<100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${ba291a9ff84f449e833b03bcf17dbd0a} * 0.002",
+      "indiIf": "0.8 <= ( ${ba291a9ff84f449e833b03bcf17dbd0a} / ${fe85864dd0c944b1a1b615e99e88d63d} ) < 1.0",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },
+    {
+      "id": "d55eaf532b564a959fe914838e2697b3",
+      "indiName": "片区运维权责收入[100%<=完成目标]",
+      "indiComment": "片区运维权责收入[100%<=完成目标]",
+      "indiType": "normal",
+      "indiCalculateStr": "${ba291a9ff84f449e833b03bcf17dbd0a} * 0.004",
+      "indiIf": "1.0 <= ( ${ba291a9ff84f449e833b03bcf17dbd0a} / ${fe85864dd0c944b1a1b615e99e88d63d} )",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },{
+      "id": "91e3467ca1724679bd65a20c100e439a",
+      "indiName": "片区运维权责收入[120%<=完成目标]",
+      "indiComment": "片区运维权责收入[120%<=完成目标]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${ba291a9ff84f449e833b03bcf17dbd0a} - ${fe85864dd0c944b1a1b615e99e88d63d} ) * 0.008",
+      "indiIf": "1.2 <= ( ${ba291a9ff84f449e833b03bcf17dbd0a} / ${fe85864dd0c944b1a1b615e99e88d63d} ) ",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },{
+      "id": "024465c7e82a4d5691094a255506c5b9",
+      "indiName": "二级单位应用推广收入[80%<=完成目标<100%]",
+      "indiComment": "二级单位应用推广收入[80%<=完成目标<100%]",
+      "indiType": "normal",
+      "indiCalculateStr": "${b106cea80b164671ab30ed9ba5926276} * 0.03",
+      "indiIf": "0.8 <= ( ${b106cea80b164671ab30ed9ba5926276} / ${9adf345469e64785a52b58aefd512702} ) < 1.0",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },{
+      "id": "c747b07623b9405fbfe373f123a9a8f3",
+      "indiName": "二级单位应用推广收入[100%<=完成目标]",
+      "indiComment": "二级单位应用推广收入[100%<=完成目标]",
+      "indiType": "normal",
+      "indiCalculateStr": "( ${b106cea80b164671ab30ed9ba5926276} - ${9adf345469e64785a52b58aefd512702} ) * 0.05",
+      "indiIf": "1.0 <= ( ${b106cea80b164671ab30ed9ba5926276} / ${9adf345469e64785a52b58aefd512702} ) ",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },
+    {
+      "id": "3e0814414b0b46b580c019bd2645be07",
+      "indiName": "内部有效投诉扣减",
+      "indiComment": "内部有效投诉扣减",
+      "indiType": "adjust",
+      "indiCalculateStr": "${634c2b0cccb54be0bea65e19a02a7663} * -0.05",
+      "indiIf": "${634c2b0cccb54be0bea65e19a02a7663} > 0",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    },
+    {
+      "id": "0cb836be4b4848bea8b222e4c53b915e",
+      "indiName": "外部有效投诉扣减",
+      "indiComment": "外部有效投诉扣减",
+      "indiType": "adjust",
+      "indiCalculateStr": "${81b0b6cdf002468c993751204bac6bb1} * -0.1",
+      "indiIf": "${81b0b6cdf002468c993751204bac6bb1} > 0",
+      "modelId": "efdaf3c901c44407af86033dcb9c7424"
+    }
+  ]
+}
