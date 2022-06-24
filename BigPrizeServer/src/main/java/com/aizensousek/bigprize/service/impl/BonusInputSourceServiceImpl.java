@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (BonusInputSource)表服务实现类
@@ -45,6 +46,12 @@ public class BonusInputSourceServiceImpl implements BonusInputSourceService {
         long total = this.bonusInputSourceDao.count(bonusInputSource);
         return new PageImpl<>(this.bonusInputSourceDao.queryAllByLimit(bonusInputSource, pageRequest), pageRequest, total);
     }
+
+    @Override
+    public List<BonusInputSource> queryAll(String modelId) {
+        return this.bonusInputSourceDao.queryAll(modelId);
+    }
+
 
     /**
      * 新增数据

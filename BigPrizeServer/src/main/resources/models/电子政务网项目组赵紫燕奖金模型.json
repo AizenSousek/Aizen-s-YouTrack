@@ -4,28 +4,28 @@
   "remark": "",
   "inputSourceList": [
     {
-      "id": "66f019505d3b4ffb9ff8137a8e6336d6",
+      "id": "8916df313e3241ad94dbecf96c4dbf0d",
       "modelId": "5a062acf6aeb44558bda64df1797722d",
       "sourceName": "团队完成率",
       "sourceInputType": "percent",
       "sourceCode": "b106cea80b164671ab30ed9ba5926276"
     },
     {
-      "id": "30561b9773bd4145b3d21b1a67ae43c2",
+      "id": "3e3219c9545c4c01be9fb41bec559d85",
       "modelId": "5a062acf6aeb44558bda64df1797722d",
       "sourceName": "全年个人平均绩效",
       "sourceInputType": "number",
       "sourceCode": "907701efe05f4af7a7a751062b3277c6dd"
     },
     {
-      "id": "8bd805ac606a4afd9002d00d58023d7ad",
+      "id": "4c4e7813b46544d4940ba518c0f4ab2e",
       "modelId": "5a062acf6aeb44558bda64df1797722d",
       "sourceName": "数字机关业务推广净收入",
       "sourceInputType": "number",
       "sourceCode": "3112e0982a6f4003976e519490fcbe34"
     },
     {
-      "id": "cd49f80caba24841b0f40a433c61d445",
+      "id": "f1876d56e2cc41d3877b25c1c7b0a815",
       "modelId": "5a062acf6aeb44558bda64df1797722d",
       "sourceName": "共性业务包签约合同金额",
       "sourceInputType": "number",

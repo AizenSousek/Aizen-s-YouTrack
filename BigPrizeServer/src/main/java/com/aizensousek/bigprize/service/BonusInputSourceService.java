@@ -4,6 +4,8 @@ import com.aizensousek.bigprize.entity.BonusInputSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.util.List;
+
 /**
  * (BonusInputSource)表服务接口
  *
@@ -29,6 +31,8 @@ public interface BonusInputSourceService {
      * @return 查询结果
      */
     Page<BonusInputSource> queryByPage(BonusInputSource bonusInputSource, PageRequest pageRequest);
+
+    List<BonusInputSource> queryAll(String modelId);
 
     /**
      * 新增数据

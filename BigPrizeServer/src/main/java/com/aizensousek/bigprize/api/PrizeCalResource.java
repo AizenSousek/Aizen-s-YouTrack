@@ -12,10 +12,7 @@ import com.aizensousek.bigprize.utils.UUIDUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -39,11 +36,10 @@ public class PrizeCalResource {
 
     private ScriptEngineManager scriptEngineManager;
 
-    private final String FORMUL_REGEX = "\\$\\{.*?}";
-    private BonusModelService bonusModelService;
-    private BonusInputSourceService bonusInputSourceService;
-    private BonusLadderService bonusLadderService;
-    private BonusCalculateIndicatorService bonusCalculateIndicatorService;
+    private final BonusModelService bonusModelService;
+    private final BonusInputSourceService bonusInputSourceService;
+    private final BonusLadderService bonusLadderService;
+    private final BonusCalculateIndicatorService bonusCalculateIndicatorService;
 
     @Autowired
     public PrizeCalResource(BonusModelService bonusModelService, BonusInputSourceService bonusInputSourceService, BonusLadderService bonusLadderService, BonusCalculateIndicatorService bonusCalculateIndicatorService) {
@@ -74,7 +70,7 @@ public class PrizeCalResource {
                     if (sourceValue.compareTo(minLadder) < 0){
                         continue;
                     }
-                    Object formulResult = null;
+                    Object formulResult;
                     if (maxLadder.compareTo(sourceValue) <= 0) {
                         String maxCalculateFormul = ladder.getMaxLadderCalculateStr();
                         formulResult = getFormulResult(inputSourceList, maxCalculateFormul);
@@ -124,6 +120,56 @@ public class PrizeCalResource {
         return model;
     }
 
+    @PostMapping("saveModelAll")
+    public BonusModelVo saveModelAll(@RequestBody BonusModelVo model){
+        // 保存model
+        BonusModel bonusModel = new BonusModel();
+        bonusModel.setId(model.getId());
+        bonusModel.setName(model.getName());
+        bonusModel.setRemark(model.getRemark());
+        bonusModelService.insert(bonusModel);
+
+        // 保存inputsource
+        List<BonusInputSource> inputSourceList = model.getInputSourceList();
+        for (BonusInputSource inputSource : inputSourceList) {
+            BonusInputSource input = new BonusInputSource();
+            input.setId(inputSource.getId());
+            input.setModelId(inputSource.getModelId());
+            input.setSourceInputType(getModelInputSourceType(inputSource));
+            input.setSourceName(inputSource.getSourceName());
+            input.setSourceCode(inputSource.getSourceCode());
+            bonusInputSourceService.insert(input);
+        }
+        List<BonusCalculateIndicator> indicators = model.getIndicators();
+        for (BonusCalculateIndicator indicator : indicators) {
+            BonusCalculateIndicator calculateIndicator = new BonusCalculateIndicator();
+            calculateIndicator.setId(indicator.getId());
+            calculateIndicator.setIndiName(indicator.getIndiName());
+            calculateIndicator.setIndiComment(indicator.getIndiComment());
+            calculateIndicator.setIndiType(getIndiType(indicator.getIndiType()));
+            calculateIndicator.setIndiCalculateStr(indicator.getIndiCalculateStr());
+            calculateIndicator.setIndiIf(indicator.getIndiIf());
+            calculateIndicator.setModelId(indicator.getModelId());
+            calculateIndicator.setLadders(null);
+            if (calculateIndicator.getIndiType().equals(BonusCalculateConstant.BONUS_CALCULATE_TYPE_LADDER)){
+                List<BonusLadder> ladders = indicator.getLadders();
+                for (BonusLadder ladder : ladders) {
+                    BonusLadder bonusLadder = new BonusLadder();
+                    bonusLadder.setId(ladder.getId());
+                    bonusLadder.setIndiId(calculateIndicator.getId());
+                    bonusLadder.setMinLadder(ladder.getMinLadder());
+                    bonusLadder.setMaxLadder(ladder.getMaxLadder());
+                    bonusLadder.setCalculateSource(ladder.getCalculateSource());
+                    bonusLadder.setIndiCalculateStr(ladder.getIndiCalculateStr());
+                    bonusLadder.setMaxLadderCalculateStr(ladder.getMaxLadderCalculateStr());
+                    bonusLadderService.insert(bonusLadder);
+                }
+            }
+            bonusCalculateIndicatorService.insert(calculateIndicator);
+        }
+        return model;
+    }
+
     private List<BonusCalculateIndicator> getDecreaseIndicator(List<BonusCalculateIndicator> indicators) {
        return indicators.stream().filter(indicator -> indicator.getIndiType().equals(BonusCalculateConstant.BONUS_CALCULATE_TYPE_DECREASE)).collect(Collectors.toList());
     }
@@ -155,6 +201,11 @@ public class PrizeCalResource {
         inputSource.setSourceInputType(source.getSourceInputType());
         inputSource.setSourceName(source.getSourceName());
         return bonusInputSourceService.insert(inputSource);
+    }
+
+    @GetMapping("getInputSource")
+    public List<BonusInputSource> getInputSource(@RequestParam("modelId") String modelId) {
+        return bonusInputSourceService.queryAll(modelId);
     }
 
     @PostMapping("updateInputSource")
@@ -207,6 +258,8 @@ public class PrizeCalResource {
                 return BonusCalculateConstant.BONUS_CALCULATE_TYPE_NORMAL;
             case "ladder":
                 return BonusCalculateConstant.BONUS_CALCULATE_TYPE_LADDER;
+            case "adjust" :
+                return BonusCalculateConstant.BONUS_CALCULATE_TYPE_DECREASE;
         }
         return null;
     }
@@ -233,6 +286,7 @@ public class PrizeCalResource {
     private Object getFormulResult(List<BonusInputSource> inputSourceList, String formul){
         if (StringUtils.isNotEmpty(formul)) {
             ScriptEngine scriptEngine = getScriptEngineManager().getEngineByName("nashorn");
+            String FORMUL_REGEX = "\\$\\{.*?}";
             Pattern compile = Pattern.compile(FORMUL_REGEX);
             Matcher matcher = compile.matcher(formul);
             while (matcher.find()){
@@ -265,7 +319,4 @@ public class PrizeCalResource {
         return scriptEngineManager;
     }
 
-    public void setScriptEngineManager(ScriptEngineManager scriptEngineManager) {
-        this.scriptEngineManager = scriptEngineManager;
-    }
 }

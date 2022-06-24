@@ -81,4 +81,5 @@ public interface BonusInputSourceDao {
      */
     int deleteById(String id);
 
+    List<BonusInputSource> queryAll(String modelId);
 }

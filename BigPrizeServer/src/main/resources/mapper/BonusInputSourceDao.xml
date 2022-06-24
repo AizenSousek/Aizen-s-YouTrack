@@ -46,6 +46,17 @@
         limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
+    <select id="queryAll" resultMap="BonusInputSourceMap">
+        select
+        id, model_id, source_name, source_input_type, source_code
+        from bonus_input_source
+        <where>
+            <if test="modelId != null and modelId != ''">
+                and model_id = #{modelId}
+            </if>
+        </where>
+    </select>
+
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
@@ -71,15 +82,15 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_input_source(model_id, source_name, source_input_type, source_code)
-        values (#{modelId}, #{sourceName}, #{sourceInputType}, #{sourceCode})
+        insert into bonus_input_source(id, model_id, source_name, source_input_type, source_code)
+        values (#{id}, #{modelId}, #{sourceName}, #{sourceInputType}, #{sourceCode})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_input_source(model_id, source_name, source_input_type, source_code)
+        insert into bonus_input_source(id, model_id, source_name, source_input_type, source_code)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.modelId}, #{entity.sourceName}, #{entity.sourceInputType}, #{entity.sourceCode})
+            (#{entity.id}, #{entity.modelId}, #{entity.sourceName}, #{entity.sourceInputType}, #{entity.sourceCode})
         </foreach>
     </insert>
 

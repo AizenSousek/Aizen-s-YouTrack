@@ -82,23 +82,23 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
-        values (#{indiId}, #{indiCalculateStr}, #{minLadder}, #{maxLadder}, #{maxLadderCalculateStr}, #{calculateSource})
+        insert into bonus_ladder(id, indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
+        values (#{id}, #{indiId}, #{indiCalculateStr}, #{minLadder}, #{maxLadder}, #{maxLadderCalculateStr}, #{calculateSource})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
+        insert into bonus_ladder(id, indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
         values
         <foreach collection="entities" item="entity" separator=",">
-        (#{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
+        (#{entity.id}, #{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_ladder(indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
+        insert into bonus_ladder(id,indi_id, indi_calculate_str, min_ladder, max_ladder, max_ladder_calculate_str, calculate_source)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
+            (#{entity.id}, #{entity.indiId}, #{entity.indiCalculateStr}, #{entity.minLadder}, #{entity.maxLadder}, #{entity.maxLadderCalculateStr}, #{entity.calculateSource})
         </foreach>
         on duplicate key update
         indi_id = values(indi_id),

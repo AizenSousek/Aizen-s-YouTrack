@@ -53,7 +53,7 @@
       "sourceCode": "f4c9deed55eb420a8ec05872bf3662c0"
     },
     {
-      "id": "b4ff0467b7ff4af4a4149d1f94f6919b",
+      "id": "aca26107802d450a9c6cded45105f7d7",
       "modelId": "253dbe72b233469faf585cd0a858aa6c",
       "sourceName": "新拓指标完成率",
       "sourceInputType": "percent",
@@ -161,7 +161,7 @@
       "modelId": "253dbe72b233469faf585cd0a858aa6c"
     },
     {
-      "id": "1ba330cf9acd4dc0bf19b5201a8be50d",
+      "id": "6ae1ab6ac1324175a6ed4a158d38054f",
       "indiName": "新拓指标完成率[新拓指标完成率 >= 100%]",
       "indiComment": "新拓指标完成率[新拓指标完成率 >= 100%]",
       "indiType": "adjust",

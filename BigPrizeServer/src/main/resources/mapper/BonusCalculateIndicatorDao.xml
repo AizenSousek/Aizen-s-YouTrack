@@ -19,7 +19,6 @@
                indi_name,
                indi_comment,
                indi_type,
-               indi_ladder_id,
                indi_calculate_str,
                indi_if,
                model_id
@@ -30,7 +29,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BonusCalculateIndicatorMap">
         select
-        id, indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str, indi_if, model_id
+        id, indi_name, indi_comment, indi_type,  indi_calculate_str, indi_if, model_id
         from bonus_calculate_indicator
         <where>
             <if test="id != null and id != ''">
@@ -95,34 +94,33 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
+        insert into bonus_calculate_indicator(id, indi_name, indi_comment, indi_type,  indi_calculate_str,
                                               indi_if, model_id)
-        values (#{indiName}, #{indiComment}, #{indiType}, #{indiLadderId}, #{indiCalculateStr}, #{indiIf}, #{modelId})
+        values (#{id}, #{indiName}, #{indiComment}, #{indiType},  #{indiCalculateStr}, #{indiIf}, #{modelId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
+        insert into bonus_calculate_indicator(id,indi_name, indi_comment, indi_type,  indi_calculate_str,
         indi_if, model_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.indiName}, #{entity.indiComment}, #{entity.indiType}, #{entity.indiLadderId},
+            (#{id},#{entity.indiName}, #{entity.indiComment}, #{entity.indiType},
             #{entity.indiCalculateStr}, #{entity.indiIf}, #{entity.modelId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into bonus_calculate_indicator(indi_name, indi_comment, indi_type, indi_ladder_id, indi_calculate_str,
+        insert into bonus_calculate_indicator(id, indi_name, indi_comment, indi_type,  indi_calculate_str,
         indi_if, model_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.indiName}, #{entity.indiComment}, #{entity.indiType}, #{entity.indiLadderId},
+            (#{id},#{entity.indiName}, #{entity.indiComment}, #{entity.indiType},
             #{entity.indiCalculateStr}, #{entity.indiIf}, #{entity.modelId})
         </foreach>
         on duplicate key update
         indi_name = values(indi_name),
         indi_comment = values(indi_comment),
         indi_type = values(indi_type),
-        indi_ladder_id = values(indi_ladder_id),
         indi_calculate_str = values(indi_calculate_str),
         indi_if = values(indi_if),
         model_id = values(model_id)
@@ -140,9 +138,6 @@
             </if>
             <if test="indiType != null and indiType != ''">
                 indi_type = #{indiType},
-            </if>
-            <if test="indiLadderId != null and indiLadderId != ''">
-                indi_ladder_id = #{indiLadderId},
             </if>
             <if test="indiCalculateStr != null and indiCalculateStr != ''">
                 indi_calculate_str = #{indiCalculateStr},

@@ -8,7 +8,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "净收入任务目标",
       "sourceInputType": "number",
-      "sourceCode": "indicator_0fe525882f514e13b7866781543c0f5f",
+      "sourceCode": "0fe525882f514e13b7866781543c0f5f",
       "value": "3000000"
     },
     {
@@ -16,7 +16,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "实际完成净收入",
       "sourceInputType": "number",
-      "sourceCode": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
+      "sourceCode": "fa71c44572764fa7b9c92e4f61ad8f4a",
       "value": "4000000"
     },
     {
@@ -24,7 +24,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "指名及重点老客户收入任务目标",
       "sourceInputType": "number",
-      "sourceCode": "indicator_f45af770103a411fafab3d8fd6ea5618",
+      "sourceCode": "f45af770103a411fafab3d8fd6ea5618",
       "value": "1200000"
     },
     {
@@ -32,7 +32,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "实际完成指名及重点老客户收入",
       "sourceInputType": "number",
-      "sourceCode": "target_29ee324405e347228580c60f6595dfc1",
+      "sourceCode": "29ee324405e347228580c60f6595dfc1",
       "value": "1500000"
     },
     {
@@ -40,7 +40,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "实际完成新签重点领域净收入",
       "sourceInputType": "number",
-      "sourceCode": "target_41c79a7e96b54d1da532ae41a5650594",
+      "sourceCode": "41c79a7e96b54d1da532ae41a5650594",
       "value": "800000"
     },
     {
@@ -48,7 +48,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "实际完成80万以上项目净收入",
       "sourceInputType": "number",
-      "sourceCode": "target_a757d92773d849e59e3a793271800e9e",
+      "sourceCode": "a757d92773d849e59e3a793271800e9e",
       "value": "1500000"
     },
     {
@@ -56,7 +56,7 @@
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6",
       "sourceName": "实际完成休眠老客户净收入[首单收入*3%的合计]",
       "sourceInputType": "number",
-      "sourceCode": "target_4746b69044814ed789407b9f0c1d7575",
+      "sourceCode": "4746b69044814ed789407b9f0c1d7575",
       "value": "1000000"
     }
   ],
@@ -68,48 +68,48 @@
       "indiType": "ladder",
       "ladders": [
         {
-          "id": "f71708397c8b49ff8e67c7192a2b1a1c",
+          "id": "30b369bde9af46c48abe50d49a7acc18",
           "indiId": "71a51b3dd8c94c9aaafaa8fd5ea64593",
           "minLadder": "0",
           "maxLadder": "1500000",
-          "calculateSource": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
-          "indiCalculateStr": "${target_fa71c44572764fa7b9c92e4f61ad8f4a} * 0.02",
+          "calculateSource": "fa71c44572764fa7b9c92e4f61ad8f4a",
+          "indiCalculateStr": "${fa71c44572764fa7b9c92e4f61ad8f4a} * 0.02",
           "maxLadderCalculateStr": "1500000 * 0.02"
         },
         {
-          "id": "72331d003f2b49278898efd20cecac8f",
+          "id": "10c80988592e4be1b78ab4f19fde5cf5",
           "indiId": "71a51b3dd8c94c9aaafaa8fd5ea64593",
           "minLadder": "1500000",
           "maxLadder": "2000000",
-          "calculateSource": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
-          "indiCalculateStr": "( ${target_fa71c44572764fa7b9c92e4f61ad8f4a} - 1500000 ) * 0.03",
+          "calculateSource": "fa71c44572764fa7b9c92e4f61ad8f4a",
+          "indiCalculateStr": "( ${fa71c44572764fa7b9c92e4f61ad8f4a} - 1500000 ) * 0.03",
           "maxLadderCalculateStr": "( 2000000 - 1500000 ) * 0.03"
         },
         {
-          "id": "1650ddc61a5c4c7db2792bc96ea91803",
+          "id": "6a866ea7e8a34d4e9fd0e826eba3b42a",
           "indiId": "71a51b3dd8c94c9aaafaa8fd5ea64593",
           "minLadder": "2000000",
           "maxLadder": "2500000",
-          "calculateSource": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
-          "indiCalculateStr": "( ${target_fa71c44572764fa7b9c92e4f61ad8f4a} - 2000000 ) * 0.04",
+          "calculateSource": "fa71c44572764fa7b9c92e4f61ad8f4a",
+          "indiCalculateStr": "( ${fa71c44572764fa7b9c92e4f61ad8f4a} - 2000000 ) * 0.04",
           "maxLadderCalculateStr": "( 2500000 - 2000000 ) * 0.04"
         },
         {
-          "id": "218e3d43e18942c48fadb787824f6a89",
+          "id": "1e59e5777f8b48b2a826844f43313eac",
           "indiId": "71a51b3dd8c94c9aaafaa8fd5ea64593",
           "minLadder": "2500000",
           "maxLadder": "3000000",
-          "calculateSource": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
-          "indiCalculateStr": "( ${target_fa71c44572764fa7b9c92e4f61ad8f4a} - 2500000 ) * 0.06",
+          "calculateSource": "fa71c44572764fa7b9c92e4f61ad8f4a",
+          "indiCalculateStr": "( ${fa71c44572764fa7b9c92e4f61ad8f4a} - 2500000 ) * 0.06",
           "maxLadderCalculateStr": "( 3000000 - 2500000 ) * 0.06"
         },
         {
-          "id": "218e3d43e18942c48fadb787824f6a89",
+          "id": "be71220ef19543a19b843005aaec07ec",
           "indiId": "71a51b3dd8c94c9aaafaa8fd5ea64593",
           "minLadder": "3000000",
           "maxLadder": "100000000",
-          "calculateSource": "target_fa71c44572764fa7b9c92e4f61ad8f4a",
-          "indiCalculateStr": "( ${target_fa71c44572764fa7b9c92e4f61ad8f4a} - 3000000 ) * 0.08",
+          "calculateSource": "fa71c44572764fa7b9c92e4f61ad8f4a",
+          "indiCalculateStr": "( ${fa71c44572764fa7b9c92e4f61ad8f4a} - 3000000 ) * 0.08",
           "maxLadderCalculateStr": "( 100000000 - 3000000 ) * 0.08"
         }
       ],
@@ -123,8 +123,8 @@
       "indiComment": "指名及重点老客户正向收入",
       "indiType": "normal",
       "ladders": [],
-      "indiCalculateStr": "( ${indicator_f45af770103a411fafab3d8fd6ea5618} + ( ${target_29ee324405e347228580c60f6595dfc1} - ${indicator_f45af770103a411fafab3d8fd6ea5618} ) * 2 ) * 0.01",
-      "indiIf": "( ${target_29ee324405e347228580c60f6595dfc1} - ${indicator_f45af770103a411fafab3d8fd6ea5618} ) >= 0",
+      "indiCalculateStr": "( ${f45af770103a411fafab3d8fd6ea5618} + ( ${29ee324405e347228580c60f6595dfc1} - ${f45af770103a411fafab3d8fd6ea5618} ) * 2 ) * 0.01",
+      "indiIf": "( ${29ee324405e347228580c60f6595dfc1} - ${f45af770103a411fafab3d8fd6ea5618} ) >= 0",
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6"
     },
     {
@@ -133,8 +133,8 @@
       "indiComment": "指名及重点老客户负向收入",
       "indiType": "normal",
       "ladders": [],
-      "indiCalculateStr": "( ( ${indicator_f45af770103a411fafab3d8fd6ea5618} - ${target_29ee324405e347228580c60f6595dfc1} ) * 2 * -0.01 )",
-      "indiIf": "( ${target_29ee324405e347228580c60f6595dfc1} - ${indicator_f45af770103a411fafab3d8fd6ea5618} ) < 0",
+      "indiCalculateStr": "( ( ${f45af770103a411fafab3d8fd6ea5618} - ${29ee324405e347228580c60f6595dfc1} ) * 2 * -0.01 )",
+      "indiIf": "( ${29ee324405e347228580c60f6595dfc1} - ${f45af770103a411fafab3d8fd6ea5618} ) < 0",
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6"
     },
     {
@@ -143,8 +143,8 @@
       "indiComment": "新签重点领域净收入",
       "indiType": "normal",
       "ladders": [],
-      "indiCalculateStr": "${target_41c79a7e96b54d1da532ae41a5650594} * 0.01",
-      "indiIf": "${target_41c79a7e96b54d1da532ae41a5650594} > 0",
+      "indiCalculateStr": "${41c79a7e96b54d1da532ae41a5650594} * 0.01",
+      "indiIf": "${41c79a7e96b54d1da532ae41a5650594} > 0",
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6"
     },
     {
@@ -153,8 +153,8 @@
       "indiComment": "合同项目金额>=80万",
       "indiType": "normal",
       "ladders": [],
-      "indiCalculateStr": "${target_a757d92773d849e59e3a793271800e9e} * 0.01",
-      "indiIf": "${target_a757d92773d849e59e3a793271800e9e} > 0",
+      "indiCalculateStr": "${a757d92773d849e59e3a793271800e9e} * 0.01",
+      "indiIf": "${a757d92773d849e59e3a793271800e9e} > 0",
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6"
     },
     {
@@ -163,8 +163,8 @@
       "indiComment": "失联/休眠老客户激活首单收入",
       "indiType": "normal",
       "ladders": [],
-      "indiCalculateStr": "${target_4746b69044814ed789407b9f0c1d7575} * 0.03",
-      "indiIf": "${target_4746b69044814ed789407b9f0c1d7575} > 0",
+      "indiCalculateStr": "${4746b69044814ed789407b9f0c1d7575} * 0.03",
+      "indiIf": "${4746b69044814ed789407b9f0c1d7575} > 0",
       "modelId": "7ac597c24d814ec3a8b16b93cfe345a6"
     }
   ]
